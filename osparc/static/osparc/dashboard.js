@@ -17,9 +17,6 @@ var osparc_dashboard = function(){
     }
     function init(){
 
-        console.log( "XXX YYY IN osparc_dashboard.init()" );
-
-
  //       getOsparcReport();
         drawPlantsChart();
 
@@ -123,6 +120,12 @@ var osparc_dashboard = function(){
 
     }
 
+    function drawPlantsChart() {
+
+        var currentYear = today.getFullYear();
+        getPlantDataByYearByDCRating(currentYear);
+    }
+
     function getPlantDataByYearByDCRating(presentYear) {
 
         $.ajax({method:"GET",dataType:"json",url:"http://localhost:8001/api/plantstats/?count&by=year&by=DCRating",
@@ -162,7 +165,8 @@ var osparc_dashboard = function(){
           seriesType: "bars",
           width:590,
           legend: {position:"top", maxLines:5, textStyle:{fontSize: 11}},
-          isStacked:true
+          isStacked:true,
+          // reverseCategories:true
         };
 
         var plantsChart = new google.visualization.ColumnChart(document.getElementById('newplants_chart'));
