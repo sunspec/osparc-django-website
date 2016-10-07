@@ -1,0 +1,629 @@
+/*
+SunSpec oSPARC Style
+
+Colors:
+(Logo) Orange #f53
+(Logo) L Yellow #ffd
+L Blue #ddf
+L Red #fdd
+L Blue Green #dff
+D Gray #333
+White #fff
+Black #000
+*/
+html, body {
+    height:100%;
+}
+body {
+    background-color: #fff; /* White */
+    color: #000; /* Black */
+    font-family: Arial, sans-serif;
+    margin-bottom:0;
+}
+h1, h2, h3 {
+    color:#3f3f3f;
+}
+h2 a {
+    color:#3f3f3f;
+    text-decoration:none;
+}
+
+h2 a:visited{
+    color:#3f3f3f;
+    text-decoration:none;
+}
+img {
+    border:none;
+}
+.hidden {
+    visibility:hidden;
+}
+a, a:active {
+    color:#0;
+}
+a:visited {
+    color:#6600cc;
+}
+
+
+a:hover {
+    text-decoration:none;
+}
+.tooltip_text {
+    font-size:.75em;
+    color:#333;
+    padding-left:10px;
+}
+
+
+/* LAYOUT */
+
+.clearfix {
+    clear:both;
+}
+.floatLeft {
+    float:left;
+}
+.floatRight {
+    float:right;
+}
+.centerContent{
+    margin:0 auto;
+    text-align:center;
+}
+.centerText {
+    text-align:center;
+}
+.two_col {
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    width:50%;
+}
+
+
+/* UI ELEMENTS */
+.icon-spinner {
+    display:none;
+}
+#o_footer {
+    background-color:#f2f2f2;
+    border-top:solid 1px #ccc;
+    font-size:.85em;
+    color:#585858;
+    margin:20px auto 0 auto;
+    text-align:center;
+    clear:both;
+    width:100%;
+}
+.login_footer {
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+#o_footer ul {
+    width:100%;
+    margin-bottom:0;
+    padding-bottom:0;
+}
+#o_footer ul li{
+    display:inline-block;
+    padding:10px;
+}
+
+#server_response_div {
+    display:none;
+    position:absolute;
+    width:300px;
+    height:140px;
+    padding:10px;
+    z-index:101;
+}
+#server_response_text, #report_text {
+    background-color:#ffffff;
+}
+#reportOverlay{
+    width:90%;
+    display:none;
+    position:absolute;
+    z-index:101;
+}
+.close_btn {
+    text-align:center;
+    background-color:#ffffff;
+    padding-bottom:10px;
+}
+#refresh_overlay, #overlay {
+    display:none;
+    background-color:#1C1D1F;
+    opacity:.9;
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+}
+.submit_buttons {
+    padding-top:10px;
+}
+
+
+/* TOP NAV */
+#main_nav {
+    width:100%;
+    border-bottom:solid 4px #60606E;
+}
+/*
+    LEVEL ONE
+*/
+ul {
+    list-style:none;
+}
+ul.dropdown {
+    padding:0;
+    position: relative;
+    z-index:66;
+}
+ul.dropdown li {
+    border:solid 1px #60606E;
+    float: left;
+    zoom: 1;
+    background: #E6E9EA;
+    color:#60606E;
+}
+ul.dropdown li.active {
+    background-color:#60606E;
+    color: #fff;
+}
+ul.dropdown li.active a {
+    color:#fff;
+}
+
+ul.dropdown a:hover {
+    background-color: #60606E;
+    color:#fff;
+}
+ul.dropdown a:active {
+    color: #FFF;
+}
+ul.dropdown li a {
+    display: block;
+    color: #60606E;
+    text-decoration:none;
+    padding:5px;
+}
+ul.dropdown li:last-child a {
+    border-right: none;
+} /* Doesn't work in IE */
+ul.dropdown li.hover,
+ul.dropdown li:hover {
+    background-color: #60606E;
+    color: #ffffff;
+    position: relative;
+}
+ul.dropdown li.hover a {
+    background-color:#E6E9EA;
+    color: #60606E;
+    border:none;
+}
+
+.main_hover{
+    background-color: #60606E;
+    color:#ffffff;
+}
+
+
+/*
+    LEVEL TWO
+*/
+ul.dropdown ul {
+    width: 220px;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: -41px;
+}
+ul.dropdown ul li {
+    background: #E6E9EA;
+    color: #60606E;
+    float: none;
+    border-top:none;
+}
+ul.dropdown ul a:hover {
+    background-color: #60606E;
+    color:#fff;
+}
+ul.dropdown ul  a:active {
+    color: #FFF;
+}
+
+
+/* end TOP NAV */
+
+
+/* new styles */
+#create_div {
+    min-height:100%;
+}
+#o_newplants_stats, #o_myreports_stats {
+    float:right;
+    width:45%;
+}
+#o_state_wrapper, #o_stats_wrapper {
+    float:left;
+    width:45%;
+}
+input {
+    border:solid 1px #ccc;
+    border-radius:4px;
+    height:25px;
+}
+
+#create_div input {
+    width:250px;
+}
+select {
+    border:solid 1px #ccc;
+    border-radius:4px;
+    height:27px;
+    vertical-align:middle;
+}
+.table_header {
+    border-bottom:solid 1px #000;
+    font-size:1.5em;
+}
+.clearBoth {
+    clear: both;
+}
+
+.osparcButton {
+    background-color: #ffd; /* L Yellow */
+    color: #f53; /* Orange */
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size:1em;
+    padding:2px;
+    border-radius: 10px;
+    border: 1px solid #333; /* D Gray */
+    text-decoration: none;
+    cursor: pointer;
+    min-width:120px;
+
+}
+.osparcButton:hover {
+    background-color: #ccc;
+}
+
+.error {
+    color: #f00; /* Red */
+}
+
+.messageblock {
+    color: #000; /* Black */
+    background-color: #ddf; /* L Blue */
+    border: 3px solid #333; /* D Gray */
+    border-radius: 5px;
+    padding: 8px;
+    margin: 16px;
+}
+
+.errorblock {
+    color: #000; /* Black */
+    background-color: #fdd; /* L Red */
+    border: 3px solid #333; /* D Gray */
+    border-radius: 5px;
+    padding: 8px;
+    margin: 16px;
+}
+
+.listTable {
+    background-color: #fff; /* White */
+    color: #000; /* Black */
+    border: 1px solid #333; /* D Gray */
+    border-collapse: collapse;
+}
+
+.listTable th {
+    background-color: #ddf; /* L Blue */
+    color: #000; /* Black */
+    border: 1px solid #333; /* D Gray */
+    padding: 10px;
+}
+
+.listTable td {
+    border: 1px solid #333; /* D Gray */
+    padding: 10px;
+}
+
+
+.editTable {
+    background-color: #fff; /* White */
+    color: #000; /* Black */
+
+}
+
+#create_div .editTable {
+    background-color: #f1f1f1; /* White */
+    color: #3e3e3e; /* Black */
+    margin:0 auto;
+    border-radius:10px;
+    border:solid 1px #ccc;
+    padding:10px;
+}
+
+.editTable th {
+    text-align: right;
+    padding: 5px;
+}
+
+.editTable td {
+    text-align: left;
+    padding: 5px;
+}
+
+#plant_list_div {
+    padding-bottom:15px;
+}
+#plant_attributes_div, #account_attributes_div {
+    padding-top:5px;
+}
+#plant_attributes_div label {
+    display:inline-block;
+    text-indent:2px;
+}
+#plant_attributes_div input, #plant_attributes_div select,
+#account_attributes_div input, #account_attributes_div select {
+    width:250px;
+}
+#plant_attributes_div div {
+    margin:5px 0 5px 0;
+}
+
+
+/* PLANT DESIGN */
+
+#plant_design_div label {
+    display:inline-block;
+    text-indent:0;
+}
+#plant_design_div input, #plant_design_div select {
+    width:250px;
+}
+#plant_design_div div {
+    margin:5px 0 5px 0;
+}
+
+
+/* PLANT CONSTRUCTION */
+#plant_construction_div label {
+    display:inline-block;
+    text-indent:0;
+}
+#plant_construction_div input, #plant_construction_div select {
+    width:250px;
+}
+#plant_construction_div div {
+    margin:5px 0 5px 0;
+}
+
+
+/* PLANT PARTICIPANTS */
+#plant_participants_div input, #plant_participants_div select {
+    width:250px;
+}
+#plant_participants_div, #plant_participants_div div {
+    margin:5px 0 5px 0;
+}
+#selected_participants {
+    padding-top:5px;
+}
+#selected_participantType select {
+    width:200px;
+}
+#selected_tags {
+    margin:3px 0;
+}
+.add_new_value {
+    display:none;
+    position:absolute;
+
+}
+.o_category_filter {
+    border:solid 1px #ccc;
+    border-radius:4px;
+    text-indent:10px;
+    margin-bottom:10px;
+    width:100%;
+}
+.o_category_filter_header {
+    border-bottom:solid 1px #ccc;
+    color:#60606E;
+    margin:0;
+    padding:5px;
+    text-indent:3px;
+    background-color:#cccccc;
+    background-image: -webkit-linear-gradient(top, #cccccc, #ffffff, #e5e5e5);
+    background-image: -moz-linear-gradient(top, #cccccc, #ffffff, #e5e5e5);
+    font-size:1.2em;
+
+}
+.o_category_filter_header a {
+    text-decoration:none;
+    color:#3f3f3f;
+}
+.o_category_filter a {
+    text-decoration:none;
+}
+.dropdown {
+    margin:0;
+    padding:0;
+}
+
+
+/* REPORT LIST */
+#report_update_ts {
+    font-size:.8em;
+    color:#333;
+    display:none;
+}
+#reports_list_div {
+    padding-bottom:15px;
+}
+
+
+/* REPORT REQUEST */
+#add_another_module {
+    display:block;
+}
+.delete_icon{
+    visibility:hidden;
+    vertical-align:middle;
+    -moz-transform:scale(.6);
+    -webkit-transform:scale(.6);
+    transform:scale(.6);
+}
+
+#plant_evalperiod_div {
+    padding-left:20px;
+}
+#plant_tag_div select {
+    width:100px;
+}
+
+
+/* VIEW REPORT */
+#report_text {
+    padding:10px;
+}
+
+
+/* Tables */
+#pager {
+    padding:10px 0;
+}
+
+table.report_data_table {
+    border-collapse:collapse;
+    margin-left:10px;
+    color:#333;
+}
+table.tablesorter, table.report_data_table, #plant_report {
+    font-size:.9em !important;
+}
+table.tablesorter tbody td {
+    vertical-align:middle !important;
+    font-size:.85em !important;
+}
+table.tablesorter tbody tr.odd td {
+    background-color:#FFFFFF !important;
+}
+table.tablesorter tbody tr.even td {
+    background-color:#F0F0F6 !important;
+}
+
+
+/* REPORT UI */
+#reportparams, #Inverter, #info, #stakeholders {
+    margin-bottom:20px;
+}
+#reportparams, #Inverter, #Module, #kpi_pool td:first-child {
+    min-width:170px;
+}
+#report_equipment {
+    margin-top:10px;
+}
+
+#report_plantInfo, #report_stakeholders {
+    float:left;
+    width:45%;
+}
+
+#plant_report th {
+    text-align:left;
+}
+
+
+/* kpi report */
+
+.report_data_table th {
+    text-align:left;
+}
+
+#osparc_dash_report td {
+    padding: 10px 0px 10px 0px;
+}
+
+#osparc_dash_report tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+#osparc_dash_report tr:nth-child(even) {
+    background-color: #ededed;
+}
+
+#report_text .report_data_table tr:not(:first-child) td {
+    color: #333;
+    text-indent:10px;
+    padding-right:50px;
+}
+
+.report_column_heading {
+    font-weight:bold;
+}
+
+.report_label {
+    text-indent:10px;
+    padding-right:50px;
+    color:#333;
+}
+.report_data{
+    font-weight:normal;
+    color:#333;
+}
+.last_dataRow {
+    padding-bottom:10px;
+}
+.even {
+    background-color:#E6E9EA;
+}
+
+
+/* */
+.ui-tabs .ui-tabs-nav {
+    padding:0 !important;
+}
+.ui-widget-header {
+    border:0 0 1px 0 solid #333 !important;
+}
+#home_resources_div {
+    padding:10px 10px 0 10px;
+}
+input[type=file] {
+    border:none;
+}
+
+
+#dashboard_wrapper {
+    padding-top:10px;
+}
+#newplants_chart {
+    padding-top:25px;
+}
+#plant_attributes_div #name {
+    padding-right:0 !important;
+}
+
+
+/* KPI table */
+
+#kpi_stats_results {
+    padding:20px 10px 20px 10px;
+}
+
+#kpi_pool {
+    clear:both;
+    border-top:1px #000000 solid;
+    margin-top:20px;
+    margin-bottom:20px;
+}
