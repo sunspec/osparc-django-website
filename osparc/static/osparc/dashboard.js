@@ -1,4 +1,4 @@
-var osparc_dashboard = function(){
+var osparc_dashboard = function() {
     var today = new Date();
     var numYearsInChart = 0;
     var maxAttempts = 8;
@@ -15,10 +15,12 @@ var osparc_dashboard = function(){
       widgets: ['zebra'],
       sortList: [[1,1]]
     }
+
     function init(){
 
- //       getOsparcReport();
-        drawPlantsChart();
+        getPlantCount();
+        drawPlantsByStateChart();
+        drawPlantsByAgeChart();
 
         $(".close_window").on("click",function(){
             var divToClose = $(this).attr("os-data-overlay-id");
@@ -33,10 +35,12 @@ var osparc_dashboard = function(){
     function getPlantCount() {
         $.ajax({
             method:"GET",
-            url:"/v1/plant/count/all",
+            url:"http://localhost:8001/api/plantstats/?count",
             dataType:"json",
             success:function(markup){
+                console.log("total_plant_count = "+markup['count']);
                 $("#total_plant_count").html(markup);
+                // document.getElementById('total_plant_count')
 	    },
             error:function(xhr, status, e){
                 osparc_ui.showAjaxError(xhr,status,e);
@@ -44,43 +48,40 @@ var osparc_dashboard = function(){
         });
     }
 
-    function getPlantCountByState(){
+    function drawPlantsByStateChart() {
 
-        console.log( "XXX YYY IN osparc_dashboard.getPlantCountByState()" );
+        console.log( "XXX YYY IN osparc_dashboard.drawPlantsByStateChart()" );
 
         var chartData = new google.visualization.DataTable();
-    //get states with plant locations
+    
+        chartData.addColumn('string','State');
+        chartData.addColumn('number','# of Plants');
+
+        //get states with plant locations
         $.ajax({
             method:"GET",
-            url:"/v1/plant/count/state",
+            url:"http://localhost:8001/api/plantstats/?count&by=state",
             dataType:"json",
-            success:function(data){
+            success:function(data) {
 
-                chartData.addColumn('string','State');
-                chartData.addColumn('number','# of Plants');
-
-                $.each(data, function(i){
-			// the >1000?null:... clause causes any state w/over 1000 to appear black.
-			// The reason for doing this is if one state has several 1000 and the next most
-			// populous state has 45, the eye is unable to distinguish all other states.
-			// The downside is that the tooltip of the big state shows no #.
-			//			chartData.addRow([data[i].state, data[i].plantCount>1000?null:data[i].plantCount]);
-			chartData.addRow([data[i].state, data[i].plantCount]);
-                });
+                for (var key in data) {
+                    if ( data.hasOwnProperty(key) ) {
+                        chartData.addRow([key, data[key]]);
+                  }
+                }
 
                 var options = {
                   region:  'US',
                   resolution:'provinces',
                   width:450,
-                  colorAxis: {minValue: "#5DAF5D", colors: ['#5DAF5D', '#003700']},
-		  defaultColor:'#000000',
+                  colorAxis: {minValue: "#5DAF5D", colors: ['#5DAF5D', '#003700']},defaultColor:'#000000',
 		  //		  legend:'none'
                 };
 
                 var chart = new google.visualization.GeoChart(document.getElementById('state_chart'));
                 chart.draw(chartData, options);
 
-		// Make the side-by-side containers the same height
+	           // Make the side-by-side containers the same height
                 var statesH = $("#o_state_wrapper").height(); // left side
                 var ageH = $("#o_newplants_stats").height();  // right side
                 var tallerDiv = (ageH > statesH) ? "#o_newplants_stats" : "#o_state_wrapper";
@@ -96,7 +97,6 @@ var osparc_dashboard = function(){
     function getOsparcReport(){
 
         console.log( "XXX YYY IN osparc_dashboard.getOsparcReport()" );
-
 
         $.ajax({
             method:"GET",
@@ -120,7 +120,7 @@ var osparc_dashboard = function(){
 
     }
 
-    function drawPlantsChart() {
+    function drawPlantsByAgeChart() {
 
         var currentYear = today.getFullYear();
         getPlantDataByYearByDCRating(currentYear);
@@ -141,7 +141,6 @@ var osparc_dashboard = function(){
 
                 for (var key in data) {
                   if (data.hasOwnProperty(key) && (key <= presentYear)) {
-                    console.log(key + " -> " + data[key]);
                     plantsChartData.addRow([key,
                                             data[key]['<10kW'],
                                             data[key]['10-100kW'],
@@ -179,6 +178,7 @@ var osparc_dashboard = function(){
         var shorterDiv = (tallerDiv==="#o_stats_wrapper") ?  "#o_myreports_stats" : "#o_stats_wrapper";
         $(shorterDiv).css("height",$(tallerDiv).height());
     }
+
     return {
         init:init
     }
