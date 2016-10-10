@@ -48,7 +48,7 @@ var osparc_dashboard = function() {
     function getTotals() {
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/plantstats/?count",
+            url:"http://localhost:8001/api/plantstats",
             dataType:"json",
             success:function(markup){
                 console.log("getPlantCount():"+markup['count']+markup['DCRating']+markup['StorageCapacity']);
