@@ -6,9 +6,6 @@ from django.template import loader
 def index(request):
     context = {
     	'account':'oSPARC Admin',
-    	'total':3857,
-    	'dccapacity':'924.85 MW',
-    	'storagecapacity':'100 kWh'
     }
     return render(request, 'osparc/index.html', context)
 

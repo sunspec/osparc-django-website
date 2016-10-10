@@ -16,9 +16,22 @@ var osparc_dashboard = function() {
       sortList: [[1,1]]
     }
 
+    /** Round a number to n decimal places
+    * @param {int} x = number to round
+    * @param {int} n = decimal places
+    * e.g.: rnd(3.141592653589793,6) will return 3.141592
+    */
+    function rnd(x,n) {
+        var dec = [1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000,10000000000];
+        return Math.round(x*dec[n])/dec[n];
+    }
+    function convertToMW(x, y){
+        return rnd((x/1000000),y) + " MW";
+    }
+
     function init(){
 
-        getPlantCount();
+        getTotals();
         drawPlantsByStateChart();
         drawPlantsByAgeChart();
 
@@ -32,15 +45,17 @@ var osparc_dashboard = function() {
         $("#ss_reportList").tablesorter(options);
     }
 
-    function getPlantCount() {
+    function getTotals() {
         $.ajax({
             method:"GET",
             url:"http://localhost:8001/api/plantstats/?count",
             dataType:"json",
             success:function(markup){
-                console.log("total_plant_count = "+markup['count']);
+                console.log("getPlantCount():"+markup['count']+markup['DCRating']+markup['StorageCapacity']);
                 $("#total_plant_count").html(markup);
-                // document.getElementById('total_plant_count')
+                document.getElementById('total_plant_count').innerHTML = markup['count'];
+                document.getElementById('total_dc_rating').innerHTML = convertToMW(markup['DCRating'],3);
+                document.getElementById('total_storage_capacity').innerHTML = markup['StorageCapacity']+' kWh';
 	    },
             error:function(xhr, status, e){
                 osparc_ui.showAjaxError(xhr,status,e);
@@ -49,8 +64,6 @@ var osparc_dashboard = function() {
     }
 
     function drawPlantsByStateChart() {
-
-        console.log( "XXX YYY IN osparc_dashboard.drawPlantsByStateChart()" );
 
         var chartData = new google.visualization.DataTable();
     
