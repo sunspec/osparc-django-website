@@ -18,7 +18,9 @@
   </table>
 </div>
 
-<div id="row1">
+<div id="dashboard_wrapper">
+
+  <div id="row1">
     <div id="o_state_wrapper" class="o_category_filter" style="float:left;width:49%;">
       	   <h2 class="o_category_filter_header">Number of Plants By State</h2>
       	   <div id="state_chart" align="center"></div>
@@ -28,7 +30,39 @@
           <div id="newplants_chart" align="center"></div>
     </div>
     <div class="clearfix"></div>
-</div>
+  </div>  <!-- row1 -->
+
+  <div id="row2">
+      <div id="o_stats_wrapper" class="o_category_filter" style="float:left; width:49%;">
+          <h2 class="o_category_filter_header"><spring:message code="home.kpis"/></h2>
+          <div id="kpi_stats" align="center">
+              <div id="kpi_stats_results"></div>
+        </div>
+      </div>
+      <div id="o_myreports_stats" class="o_category_filter" style="float:right;width:49%;">
+        <h2 class="o_category_filter_header">Solar Resource Assessment Resources</h2>
+        <div id="home_resources_div" align="center">
+          <table id="ss_reportList" class="tablesorter">
+<!--      <tr>
+        <td><a href="http://sunspec.org/pv-asset-lifecycle-performance/">SunSpec Asset Lifecycle Performance Specifications</a></td>
+      </tr> -->
+            <tr>
+              <td><a href="http://sunspec.org/wp-content/uploads/2015/06/SunSpec-PV-System-Performance-Assessment-v2.pdf">PV System Performance Assessment</a></td>
+            </tr>
+            <tr>
+              <td><a href="http://sunspec.org/wp-content/uploads/2015/06/Best-Practices-in-PV-System-OM-20150301.pdf">Best Practices in Solar Operations and Maintenance</a></td>
+            </tr>
+            <tr>
+              <td><a href="http://www.sunspec.org/go/osparc">About oSPARC</a></td>
+            </tr>
+          </table>
+        <div class="clearfix"></div>
+      </div>
+    </div>  <!-- row2 -->
+    <div class="clearfix"></div>
+</div>  <!-- dashboard_wrapper -->
+
+
 
 <!-- from common_js.jsp -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
