@@ -35,7 +35,7 @@ var osparc_dashboard = function() {
     function getTotals() {
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/plantstats",
+            url:"http://localhost:8001/api/plants/stats",
             dataType:"json",
             success:function(markup){
                 console.log("getPlantCount():"+markup['count']+markup['DCRating']+markup['StorageCapacity']);
@@ -60,7 +60,7 @@ var osparc_dashboard = function() {
         //get states with plant locations
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/plantstats?by=state",
+            url:"http://localhost:8001/api/plants/stats?by=state",
             dataType:"json",
             success:function(data) {
 
@@ -128,7 +128,7 @@ var osparc_dashboard = function() {
 
     function getPlantDataByYearByDCRating(presentYear) {
 
-        $.ajax({method:"GET",dataType:"json",url:"http://localhost:8001/api/plantstats?by=year&by=DCRating",
+        $.ajax({method:"GET",dataType:"json",url:"http://localhost:8001/api/plants/stats?by=year&by=DCRating",
             success:function(data){
 
                 var plantsChartData = new google.visualization.DataTable(data);
