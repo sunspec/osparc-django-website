@@ -14,8 +14,6 @@ var osparc_ui = function(){
        //      }
        //  });
 
-        console.log( "XXX YYY IN osparc_ui.init()" );
-
         $("ul.dropdown li").hover(function(){
             $(this).addClass("hover");
 

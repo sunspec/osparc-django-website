@@ -33,19 +33,39 @@
   </div>  <!-- row1 -->
 
   <div id="row2">
+
+      <!-- lower-left: KPIs -->
       <div id="o_stats_wrapper" class="o_category_filter" style="float:left; width:49%;">
           <h2 class="o_category_filter_header">Energy Performance Metrics</h2>
           <div id="kpi_stats" align="center">
-              <div id="kpi_stats_results"></div>
-        </div>
+            <div id="kpi_stats_results">
+              <table class="tablesorter">
+                <tr><th>KPI</th><th>Mean</th><th>Median</th><th>Min</th><th>Max</th></tr>
+                <tr>
+                  <td><a href="http://www.sunspec.org/go/osparc">DC Power Rating (kWh/m<sup>2</sup>)</a></td>
+                  <td id='dc_mean'></td>
+                  <td id='dc_med'></td>
+                  <td id='dc_min'></td>
+                  <td id='dc_max'></td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.sunspec.org/go/osparc">Storage Capacity (kWh)</a></td> 
+                  <td id='stor_mean'></td>
+                  <td id='stor_med'></td>
+                  <td id='stor_min'></td>
+                  <td id='stor_max'></td>
+                </tr>
+              </table>
+            </div>
+          </div>
       </div>
+
+      <!-- lower-right: Solar Resource Assessment Resources -->
       <div id="o_myreports_stats" class="o_category_filter" style="float:right;width:49%;">
         <h2 class="o_category_filter_header">Solar Resource Assessment Resources</h2>
         <div id="home_resources_div" align="center">
           <table id="ss_reportList" class="tablesorter">
-<!--      <tr>
-        <td><a href="http://sunspec.org/pv-asset-lifecycle-performance/">SunSpec Asset Lifecycle Performance Specifications</a></td>
-      </tr> -->
+<!--      <tr> <td><a href="http://sunspec.org/pv-asset-lifecycle-performance/">SunSpec Asset Lifecycle Performance Specifications</a></td> </tr> -->
             <tr>
               <td><a href="http://sunspec.org/wp-content/uploads/2015/06/SunSpec-PV-System-Performance-Assessment-v2.pdf">PV System Performance Assessment</a></td>
             </tr>
@@ -57,7 +77,9 @@
             </tr>
           </table>
         <div class="clearfix"></div>
-      </div>
+      </div>  
+      <!-- lower-right: Solar Resource Assessment Resources -->
+
     </div>  <!-- row2 -->
     <div class="clearfix"></div>
 </div>  <!-- dashboard_wrapper -->

@@ -21,6 +21,7 @@ var osparc_dashboard = function() {
         getTotals();
         drawPlantsByStateChart();
         drawPlantsByAgeChart();
+        getOsparcReport();
 
         $(".close_window").on("click",function(){
             var divToClose = $(this).attr("os-data-overlay-id");
@@ -38,8 +39,6 @@ var osparc_dashboard = function() {
             url:"http://localhost:8001/api/plants/stats",
             dataType:"json",
             success:function(markup){
-                console.log("getPlantCount():"+markup['count']+markup['DCRating']+markup['StorageCapacity']);
-                $("#total_plant_count").html(markup);
                 document.getElementById('total_plant_count').innerHTML = markup['count'];
                 document.getElementById('total_dc_rating').innerHTML = osparc_ui.convertToMW(markup['DCRating'],3);
                 document.getElementById('total_storage_capacity').innerHTML = markup['StorageCapacity']+' kWh';
@@ -100,10 +99,21 @@ var osparc_dashboard = function() {
 
         $.ajax({
             method:"GET",
-            url:"/v1/reportrun/1/kpis/html",
-            success:function(markup){
-                $("#kpi_stats_results").html(markup);
-                $("#kpi_stats_results").find("table").addClass("report_data_table").attr("id","osparc_dash_report");
+            url:"http://localhost:8001/api/plants/kpis",
+            success:function(result){
+                document.getElementById('dc_mean').innerHTML = result['DCRating']['mean'];
+                document.getElementById('dc_med').innerHTML = result['DCRating']['median'];
+                document.getElementById('dc_min').innerHTML = result['DCRating']['min'];
+                document.getElementById('dc_max').innerHTML = result['DCRating']['max'];
+                document.getElementById('stor_mean').innerHTML = result['StorageCapacity']['mean'];
+                document.getElementById('stor_med').innerHTML = result['StorageCapacity']['median'];
+                document.getElementById('stor_min').innerHTML = result['StorageCapacity']['min'];
+                document.getElementById('stor_max').innerHTML = result['StorageCapacity']['max'];
+
+
+
+                // $("#kpi_stats_results").html(markup);
+                // $("#kpi_stats_results").find("table").addClass("report_data_table").attr("id","osparc_dash_report");
                 //fix html - temp code
 		//                $("#osparc_dash_report tr:lt(3)").find($("td:empty")).remove();
 
@@ -111,7 +121,7 @@ var osparc_dashboard = function() {
 		//                $('#osparc_dash_report tr:eq(3)').after('<tr><td colspan="5">&nbsp;</td></tr>');
 		//                $("#osparc_dash_report tr:eq(5)").find($("td")).addClass("report_column_heading");
                 // $("#osparc_dash_report tr:first").remove(); 
-               getPlantCountByState();
+               // getPlantCountByState();
             },
             error:function(xhr, status, e){
                 osparc_ui.showAjaxError(xhr,status,e);
