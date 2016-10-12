@@ -116,15 +116,15 @@ var osparc_dashboard = function() {
                 document.getElementById('wh_min').innerHTML = result['DailyGeneratedEnergy']['min'];
                 document.getElementById('wh_max').innerHTML = result['DailyGeneratedEnergy']['max'];
 
-                document.getElementById('yield_mean').innerHTML = result['DailyYield']['mean'];
-                document.getElementById('yield_med').innerHTML = result['DailyYield']['median'];
-                document.getElementById('yield_min').innerHTML = result['DailyYield']['min'];
-                document.getElementById('yield_max').innerHTML = result['DailyYield']['max'];
+                // document.getElementById('yield_mean').innerHTML = result['DailyYield']['mean'];
+                // document.getElementById('yield_med').innerHTML = result['DailyYield']['median'];
+                // document.getElementById('yield_min').innerHTML = result['DailyYield']['min'];
+                // document.getElementById('yield_max').innerHTML = result['DailyYield']['max'];
 
-                document.getElementById('pr_mean').innerHTML = result['PerformanceRatio']['mean'];
-                document.getElementById('pr_med').innerHTML = result['PerformanceRatio']['median'];
-                document.getElementById('pr_min').innerHTML = result['PerformanceRatio']['min'];
-                document.getElementById('pr_max').innerHTML = result['PerformanceRatio']['max'];
+                // document.getElementById('pr_mean').innerHTML = result['PerformanceRatio']['mean'];
+                // document.getElementById('pr_med').innerHTML = result['PerformanceRatio']['median'];
+                // document.getElementById('pr_min').innerHTML = result['PerformanceRatio']['min'];
+                // document.getElementById('pr_max').innerHTML = result['PerformanceRatio']['max'];
 
                 document.getElementById('stor_mean').innerHTML = result['StorageCapacity']['mean'];
                 document.getElementById('stor_med').innerHTML = result['StorageCapacity']['median'];
