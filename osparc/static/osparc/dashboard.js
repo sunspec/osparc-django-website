@@ -101,25 +101,25 @@ var osparc_dashboard = function() {
             method:"GET",
             url:"http://localhost:8001/api/plants/kpis",
             success:function(result){
-                document.getElementById('ghi_mean').innerHTML = result['DailyInsolation']['mean'];
-                document.getElementById('ghi_med').innerHTML = result['DailyInsolation']['median'];
-                document.getElementById('ghi_min').innerHTML = result['DailyInsolation']['min'];
-                document.getElementById('ghi_max').innerHTML = result['DailyInsolation']['max'];
+                document.getElementById('ghi_mean').innerHTML = result['MonthlyInsolation']['mean'];
+                document.getElementById('ghi_med').innerHTML = result['MonthlyInsolation']['median'];
+                document.getElementById('ghi_min').innerHTML = result['MonthlyInsolation']['min'];
+                document.getElementById('ghi_max').innerHTML = result['MonthlyInsolation']['max'];
 
                 document.getElementById('dc_mean').innerHTML = result['DCRating']['mean'];
                 document.getElementById('dc_med').innerHTML = result['DCRating']['median'];
                 document.getElementById('dc_min').innerHTML = result['DCRating']['min'];
                 document.getElementById('dc_max').innerHTML = result['DCRating']['max'];
 
-                document.getElementById('wh_mean').innerHTML = result['DailyGeneratedEnergy']['mean'];
-                document.getElementById('wh_med').innerHTML = result['DailyGeneratedEnergy']['median'];
-                document.getElementById('wh_min').innerHTML = result['DailyGeneratedEnergy']['min'];
-                document.getElementById('wh_max').innerHTML = result['DailyGeneratedEnergy']['max'];
+                document.getElementById('wh_mean').innerHTML = result['MonthlyGeneratedEnergy']['mean'];
+                document.getElementById('wh_med').innerHTML = result['MonthlyGeneratedEnergy']['median'];
+                document.getElementById('wh_min').innerHTML = result['MonthlyGeneratedEnergy']['min'];
+                document.getElementById('wh_max').innerHTML = result['MonthlyGeneratedEnergy']['max'];
 
-                // document.getElementById('yield_mean').innerHTML = result['DailyYield']['mean'];
-                // document.getElementById('yield_med').innerHTML = result['DailyYield']['median'];
-                // document.getElementById('yield_min').innerHTML = result['DailyYield']['min'];
-                // document.getElementById('yield_max').innerHTML = result['DailyYield']['max'];
+                document.getElementById('yield_mean').innerHTML = result['MonthlyYield']['mean'];
+                document.getElementById('yield_med').innerHTML = result['MonthlyYield']['median'];
+                document.getElementById('yield_min').innerHTML = result['MonthlyYield']['min'];
+                document.getElementById('yield_max').innerHTML = result['MonthlyYield']['max'];
 
                 // document.getElementById('pr_mean').innerHTML = result['PerformanceRatio']['mean'];
                 // document.getElementById('pr_med').innerHTML = result['PerformanceRatio']['median'];
