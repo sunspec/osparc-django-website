@@ -101,14 +101,40 @@ var osparc_dashboard = function() {
             method:"GET",
             url:"http://localhost:8001/api/plants/kpis",
             success:function(result){
+                document.getElementById('ghi_mean').innerHTML = result['DailyInsolation']['mean'];
+                document.getElementById('ghi_med').innerHTML = result['DailyInsolation']['median'];
+                document.getElementById('ghi_min').innerHTML = result['DailyInsolation']['min'];
+                document.getElementById('ghi_max').innerHTML = result['DailyInsolation']['max'];
+
                 document.getElementById('dc_mean').innerHTML = result['DCRating']['mean'];
                 document.getElementById('dc_med').innerHTML = result['DCRating']['median'];
                 document.getElementById('dc_min').innerHTML = result['DCRating']['min'];
                 document.getElementById('dc_max').innerHTML = result['DCRating']['max'];
+
+                document.getElementById('wh_mean').innerHTML = result['DailyGeneratedEnergy']['mean'];
+                document.getElementById('wh_med').innerHTML = result['DailyGeneratedEnergy']['median'];
+                document.getElementById('wh_min').innerHTML = result['DailyGeneratedEnergy']['min'];
+                document.getElementById('wh_max').innerHTML = result['DailyGeneratedEnergy']['max'];
+
+                document.getElementById('yield_mean').innerHTML = result['DailyYield']['mean'];
+                document.getElementById('yield_med').innerHTML = result['DailyYield']['median'];
+                document.getElementById('yield_min').innerHTML = result['DailyYield']['min'];
+                document.getElementById('yield_max').innerHTML = result['DailyYield']['max'];
+
+                document.getElementById('pr_mean').innerHTML = result['PerformanceRatio']['mean'];
+                document.getElementById('pr_med').innerHTML = result['PerformanceRatio']['median'];
+                document.getElementById('pr_min').innerHTML = result['PerformanceRatio']['min'];
+                document.getElementById('pr_max').innerHTML = result['PerformanceRatio']['max'];
+
                 document.getElementById('stor_mean').innerHTML = result['StorageCapacity']['mean'];
                 document.getElementById('stor_med').innerHTML = result['StorageCapacity']['median'];
                 document.getElementById('stor_min').innerHTML = result['StorageCapacity']['min'];
                 document.getElementById('stor_max').innerHTML = result['StorageCapacity']['max'];
+
+                document.getElementById('soh_mean').innerHTML = result['StorageStateOfHealth']['mean'];
+                document.getElementById('soh_med').innerHTML = result['StorageStateOfHealth']['median'];
+                document.getElementById('soh_min').innerHTML = result['StorageStateOfHealth']['min'];
+                document.getElementById('soh_max').innerHTML = result['StorageStateOfHealth']['max'];
 
 
 
