@@ -106,15 +106,15 @@ var osparc_dashboard = function() {
                 document.getElementById('ghi_min').innerHTML = result['MonthlyInsolation']['min'];
                 document.getElementById('ghi_max').innerHTML = result['MonthlyInsolation']['max'];
 
-                document.getElementById('dc_mean').innerHTML = osparc_ui.convertToKW(result['DCRating']['mean'],3);
-                document.getElementById('dc_med').innerHTML = osparc_ui.convertToKW(result['DCRating']['median'],3);
-                document.getElementById('dc_min').innerHTML = osparc_ui.convertToKW(result['DCRating']['min'],3);
-                document.getElementById('dc_max').innerHTML = osparc_ui.convertToKW(result['DCRating']['max'],3);
+                document.getElementById('dc_mean').innerHTML = osparc_ui.convertByKilo(result['DCRating']['mean'],3);
+                document.getElementById('dc_med').innerHTML = osparc_ui.convertByKilo(result['DCRating']['median'],3);
+                document.getElementById('dc_min').innerHTML = osparc_ui.convertByKilo(result['DCRating']['min'],3);
+                document.getElementById('dc_max').innerHTML = osparc_ui.convertByKilo(result['DCRating']['max'],3);
 
-                document.getElementById('wh_mean').innerHTML = result['MonthlyGeneratedEnergy']['mean'];
-                document.getElementById('wh_med').innerHTML = result['MonthlyGeneratedEnergy']['median'];
-                document.getElementById('wh_min').innerHTML = result['MonthlyGeneratedEnergy']['min'];
-                document.getElementById('wh_max').innerHTML = result['MonthlyGeneratedEnergy']['max'];
+                document.getElementById('wh_mean').innerHTML = osparc_ui.convertByKilo(result['MonthlyGeneratedEnergy']['mean'],3);
+                document.getElementById('wh_med').innerHTML = osparc_ui.convertByKilo(result['MonthlyGeneratedEnergy']['median'],3);
+                document.getElementById('wh_min').innerHTML = osparc_ui.convertByKilo(result['MonthlyGeneratedEnergy']['min'],3);
+                document.getElementById('wh_max').innerHTML = osparc_ui.convertByKilo(result['MonthlyGeneratedEnergy']['max'],3);
 
                 document.getElementById('yield_mean').innerHTML = result['MonthlyYield']['mean'];
                 document.getElementById('yield_med').innerHTML = result['MonthlyYield']['median'];
@@ -126,15 +126,15 @@ var osparc_dashboard = function() {
                 document.getElementById('pr_min').innerHTML = result['PerformanceRatio']['min'];
                 document.getElementById('pr_max').innerHTML = result['PerformanceRatio']['max'];
 
-                document.getElementById('stor_mean').innerHTML = result['StorageCapacity']['mean'];
-                document.getElementById('stor_med').innerHTML = result['StorageCapacity']['median'];
-                document.getElementById('stor_min').innerHTML = result['StorageCapacity']['min'];
-                document.getElementById('stor_max').innerHTML = result['StorageCapacity']['max'];
+                document.getElementById('stor_mean').innerHTML = osparc_ui.convertByKilo(result['StorageCapacity']['mean'],3);
+                document.getElementById('stor_med').innerHTML = osparc_ui.convertByKilo(result['StorageCapacity']['median'],3);
+                document.getElementById('stor_min').innerHTML = osparc_ui.convertByKilo(result['StorageCapacity']['min'],3);
+                document.getElementById('stor_max').innerHTML = osparc_ui.convertByKilo(result['StorageCapacity']['max'],3);
 
-                document.getElementById('soh_mean').innerHTML = result['StorageStateOfHealth']['mean'];
-                document.getElementById('soh_med').innerHTML = result['StorageStateOfHealth']['median'];
-                document.getElementById('soh_min').innerHTML = result['StorageStateOfHealth']['min'];
-                document.getElementById('soh_max').innerHTML = result['StorageStateOfHealth']['max'];
+                document.getElementById('soh_mean').innerHTML = osparc_ui.convertByKilo(result['StorageStateOfHealth']['mean'],3);
+                document.getElementById('soh_med').innerHTML = osparc_ui.convertByKilo(result['StorageStateOfHealth']['median'],3);
+                document.getElementById('soh_min').innerHTML = osparc_ui.convertByKilo(result['StorageStateOfHealth']['min'],3);
+                document.getElementById('soh_max').innerHTML = osparc_ui.convertByKilo(result['StorageStateOfHealth']['max'],3);
 
 
 

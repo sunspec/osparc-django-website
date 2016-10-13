@@ -145,10 +145,17 @@ var osparc_ui = function(){
         return Math.round(x*dec[n])/dec[n];
     }
 
+    function convertByMega(x,y) {
+        return rnd((x/1000000),y);
+    }
+
     function convertToMW(x, y){
         return rnd((x/1000000),y);
     }
 
+    function convertByKilo(x,y) {
+        return rnd((x/1000),y);
+    }
     function convertToKW(x,y) {
         return rnd((x/1000),y);
     }
@@ -183,7 +190,7 @@ var osparc_ui = function(){
         closePopup:closePopup,
         rnd:rnd,
         convertToMW:convertToMW,
-        convertToKW:convertToKW,
+        convertByKilo:convertByKilo,
         showAjaxError:showAjaxError
     }
 }();
