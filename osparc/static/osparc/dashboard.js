@@ -40,7 +40,7 @@ var osparc_dashboard = function() {
             dataType:"json",
             success:function(markup){
                 document.getElementById('total_plant_count').innerHTML = markup['count'];
-                document.getElementById('total_dc_rating').innerHTML = osparc_ui.convertToMW(markup['DCRating'],3);
+                document.getElementById('total_dc_rating').innerHTML = osparc_ui.convertToMW(markup['DCRating'],3)+" MW";
                 document.getElementById('total_storage_capacity').innerHTML = markup['StorageCapacity']+' kWh';
 	    },
             error:function(xhr, status, e){
@@ -106,10 +106,10 @@ var osparc_dashboard = function() {
                 document.getElementById('ghi_min').innerHTML = result['MonthlyInsolation']['min'];
                 document.getElementById('ghi_max').innerHTML = result['MonthlyInsolation']['max'];
 
-                document.getElementById('dc_mean').innerHTML = result['DCRating']['mean'];
-                document.getElementById('dc_med').innerHTML = result['DCRating']['median'];
-                document.getElementById('dc_min').innerHTML = result['DCRating']['min'];
-                document.getElementById('dc_max').innerHTML = result['DCRating']['max'];
+                document.getElementById('dc_mean').innerHTML = osparc_ui.convertToKW(result['DCRating']['mean'],3);
+                document.getElementById('dc_med').innerHTML = osparc_ui.convertToKW(result['DCRating']['median'],3);
+                document.getElementById('dc_min').innerHTML = osparc_ui.convertToKW(result['DCRating']['min'],3);
+                document.getElementById('dc_max').innerHTML = osparc_ui.convertToKW(result['DCRating']['max'],3);
 
                 document.getElementById('wh_mean').innerHTML = result['MonthlyGeneratedEnergy']['mean'];
                 document.getElementById('wh_med').innerHTML = result['MonthlyGeneratedEnergy']['median'];

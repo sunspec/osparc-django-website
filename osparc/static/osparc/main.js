@@ -144,8 +144,13 @@ var osparc_ui = function(){
         var dec = [1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000,10000000000];
         return Math.round(x*dec[n])/dec[n];
     }
+
     function convertToMW(x, y){
-        return rnd((x/1000000),y) + " MW";
+        return rnd((x/1000000),y);
+    }
+
+    function convertToKW(x,y) {
+        return rnd((x/1000),y);
     }
 
     function showAjaxError(xhr,status,e,msg){
@@ -178,6 +183,7 @@ var osparc_ui = function(){
         closePopup:closePopup,
         rnd:rnd,
         convertToMW:convertToMW,
+        convertToKW:convertToKW,
         showAjaxError:showAjaxError
     }
 }();
