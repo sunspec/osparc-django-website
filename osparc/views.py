@@ -12,6 +12,9 @@ def index(request):
 def head_nav(request):
 	return render(request, 'osparc/head_nav.html')
 
+def view_plant(request):
+	return render(request, 'osparc/view_plant.html')	
+
 def list_plants(request):
 	print "in list_plants"
 	context = {

@@ -28,7 +28,7 @@ var osparc_listplants = function() {
 			for (var key=0, size=data.length; key<size; key++) {
 
     			ar[++j] = '<tr><td>';
-				ar[++j] = '<a href="list_plants">View</a>&nbsp;';
+				ar[++j] = '<a href="view_plant">View</a>&nbsp;';
 				ar[++j] = '<a href="list_plants" onclick="return confirm("Are you sure you want to delete this plant?");">Delete</a>';
     			ar[++j] = '</td><td>';
     			ar[++j] = data[key]['name'];
