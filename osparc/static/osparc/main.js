@@ -14,6 +14,9 @@ var osparc_ui = function(){
        //      }
        //  });
 
+        console.log( "XXX YYY IN main.init()" );
+
+<!-- kinda looks like this does nothing...
         $("ul.dropdown li").hover(function(){
             $(this).addClass("hover");
 
@@ -35,6 +38,7 @@ var osparc_ui = function(){
             var cbUrl = $(this).attr("o-data-url");
             window.location = "/" + cbUrl;
         });
+-->
     }
 
     function initCitySearch(){

@@ -1,0 +1,61 @@
+<!-- <c:set var="activeTab" value="manage_plants" scope="session"/> -->
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/themes_blue.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/osparc.css' %}" />
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SunSpec Alliance oSPARC</title>
+</head>
+
+<body>
+<!-- Copyright SunSpec Alliance 2014-2016 All Rights Reserved -->
+  <div w3-include-html="head_nav"></div>
+
+  <h2>Manage Plants</h2>
+
+<!--
+  <sec:authorize access="hasRole('dataProvider')">
+    <c:if test="${dpreportid != null}">
+      <a os-data-reportname='Data Provider Report' os-data-reportrun-id="${dpreportid}" class="viewReportLink" href="javascript:void(0);"><spring:message code="plant.list.viewDataProviderReport"/></a>
+    </c:if>
+  </sec:authorize>
+-->
+
+<div id="plant_list_div">
+
+  <table id="plantlist" class="tablesorter"></table>
+
+<!-- paging stuff...
+  <jsp:include page="../includes/pager.jsp" />
+  <jsp:include page="../includes/report_popup.jsp" />
+...-->
+</div>
+
+
+<div id="overlay"></div>
+<div id="o_footer">
+    <ul>
+        <li>Copyright &copy; 2014-2016 SunSpec Alliance</li>
+        <li><a href="http://www.sunspec.org/join-osparc-program/">Request Account</a></li>
+        <li><a href="http://sunspec.org/contact/" target="_blank">Contact Us</a></li>
+        <li><a href="http://www.sunspec.org/osparc-service-activation-agreement/" target="_blank">Terms of Use</a></li>
+  <li>Version 2.1</li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+<script>w3IncludeHTML();</script>
+
+<!-- from common_js.jsp -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+<script src="{% static 'osparc/jquery.tablesorter.min.js' %}"></script>
+<script src="{% static 'osparc/list_plants.js' %}"></script>
+</body>
+</html>

@@ -1,12 +1,11 @@
-
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'osparc/themes_blue.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'osparc/osparc.css' %}" />
 
-<a href="http://www.sunspec.org/"><img src="{% static "osparc/images/osparc_header.jpeg" %}" alt="SunSpec Alliance oSPARC" title="SunSpec Alliance oSPARC"/></a>
-<div class="floatRight"><a href="http://www.cleanpower.com/"><img src="{% static "osparc/images/by_SA-SystemCheck_web.png" %}" alt="Clean Power Research" title="Clean Power Research"/></a></div>
+<div w3-include-html="head_nav"></div>
 
+<!-- Summary stats (user name, total counts, total capacities) -->
 <div id="summary_info">
   <table class="tablesorter">
     <tr>
@@ -18,6 +17,7 @@
   </table>
 </div>
 
+<!-- Main content -->
 <div id="dashboard_wrapper">
 
   <div id="row1">
@@ -40,7 +40,10 @@
           <div id="kpi_stats" align="center">
             <div id="kpi_stats_results">
               <table class="tablesorter">
+                <thead>
                 <tr><th>KPI</th><th>Mean</th><th>Median</th><th>Min</th><th>Max</th></tr>
+                </thead>
+                <tbody>
                 <tr>
                   <td><a href="http://www.sunspec.org/go/osparc">DC Power Rating (kW)</a></td>
                   <td id='dc_mean'></td>
@@ -90,6 +93,7 @@
                   <td id='soh_min'></td>
                   <td id='soh_max'></td>
                 </tr>
+              </tbody>
               </table>
             </div>
           </div>
@@ -131,6 +135,9 @@
     </ul>
     <div class="clearfix"></div>
 </div>
+
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+<script>w3IncludeHTML();</script>
 
 <!-- from common_js.jsp -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

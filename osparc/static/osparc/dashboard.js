@@ -18,6 +18,7 @@ var osparc_dashboard = function() {
 
     function init(){
 
+        console.log( "XXX YYY IN osparc_dashboard.init()" );
         getTotals();
         drawPlantsByStateChart();
         drawPlantsByAgeChart();
@@ -50,6 +51,8 @@ var osparc_dashboard = function() {
     }
 
     function drawPlantsByStateChart() {
+
+        console.log( "XXX YYY IN osparc_dashboard.drawPlantsByStateChart()" );
 
         var chartData = new google.visualization.DataTable();
     
@@ -215,11 +218,29 @@ var osparc_dashboard = function() {
         $(shorterDiv).css("height",$(tallerDiv).height());
     }
 
+    function postAddPlant(postData) {
+        console.log("postAddPlant");
+        $.ajax({
+            type: "post",
+            url: "url",
+            data: postData,
+            contentType: "application/x-www-form-urlencoded",
+            success: function(responseData, textStatus, jqXHR) {
+            console.log("postAddPlant success");
+                alert("data saved")
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        })
+    }
+
     return {
-        init:init
+        init:init,
+        postAddPlant:postAddPlant
     }
 }();
 
-$(document).ready(function(){
+$(document).ready(function() {
     osparc_dashboard.init();
 });
