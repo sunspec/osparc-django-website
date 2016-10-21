@@ -4,10 +4,14 @@ var osparc_viewplant = function() {
 		getPlant()
 	}
 
-	function getPlant() {
+	function getPlant(linkUrl) {
+        var id = 2;
+        url = "http://localhost:8001/api/plants?id="+id;
+
+
 		$.ajax( {
             method:"GET",
-            url:"http://localhost:8001/api/plants/2",
+            url:url,
             dataType:"json",
 
         success:function(data) {
