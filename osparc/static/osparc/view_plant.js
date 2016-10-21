@@ -1,12 +1,30 @@
 var osparc_viewplant = function() {
 
 	function init() {
-		getPlant()
+		getPlant( getLink() );
 	}
 
+    function getLink() {
+        return getParameterByName('link');
+    }
+
+    function getParameterByName(name) {
+        var url = window.location.href;
+
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 	function getPlant(linkUrl) {
+
         var id = 2;
-        url = "http://localhost:8001/api/plants?id="+id;
+        url = "http://localhost:8001"+linkUrl;
+
+        console.log( "url="+url );
 
 
 		$.ajax( {

@@ -37,7 +37,7 @@ var osparc_dashboard = function() {
     function getTotals() {
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/plants/stats",
+            url:"http://localhost:8001/api/aggregates",
             dataType:"json",
             success:function(markup){
                 document.getElementById('total_plant_count').innerHTML = markup['count'];
@@ -62,37 +62,44 @@ var osparc_dashboard = function() {
         //get states with plant locations
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/plants/stats?by=state",
+            url:"http://localhost:8001/api/aggregates?by=state",
             dataType:"json",
             success:function(data) {
 
-                for (var key in data) {
-                    if ( data.hasOwnProperty(key) ) {
-                        chartData.addRow([key, data[key]]);
-                  }
-                }
+                var states = data['bystate'];
+                if (typeof states != "undefined") {
 
-                var options = {
-                  region:  'US',
-                  resolution:'provinces',
-                  width:450,
-                  colorAxis: {minValue: "#5DAF5D", colors: ['#5DAF5D', '#003700']},defaultColor:'#000000',
+                    for (var key in states) {
+                        if ( states.hasOwnProperty(key) ) {
+                            chartData.addRow([key, states[key]]);
+                        }
+                    }
+
+                    var options = {
+                    region:  'US',
+                    resolution:'provinces',
+                    width:450,
+                    colorAxis: {minValue: "#5DAF5D", colors: ['#5DAF5D', '#003700']},defaultColor:'#000000',
 		  //		  legend:'none'
-                };
+                    };
 
-                var chart = new google.visualization.GeoChart(document.getElementById('state_chart'));
-                chart.draw(chartData, options);
+                    var chart = new google.visualization.GeoChart(document.getElementById('state_chart'));
+                    chart.draw(chartData, options);
 
 	           // Make the side-by-side containers the same height
-                var statesH = $("#o_state_wrapper").height(); // left side
-                var ageH = $("#o_newplants_stats").height();  // right side
-                var tallerDiv = (ageH > statesH) ? "#o_newplants_stats" : "#o_state_wrapper";
-                var shorterDiv = (tallerDiv==="#o_newplants_stats") ?  "#o_state_wrapper" : "#o_newplants_stats";
-                $(shorterDiv).css("height",$(tallerDiv).height());
+                    var statesH = $("#o_state_wrapper").height(); // left side
+                    var ageH = $("#o_newplants_stats").height();  // right side
+                    var tallerDiv = (ageH > statesH) ? "#o_newplants_stats" : "#o_state_wrapper";
+                    var shorterDiv = (tallerDiv==="#o_newplants_stats") ?  "#o_state_wrapper" : "#o_newplants_stats";
+                    $(shorterDiv).css("height",$(tallerDiv).height());
+                } else {
+                    console.log("!!!!!!!!!! no bystate")
+                }
             },
             error:function(xhr, status, e){
                  osparc_ui.showAjaxError(xhr,status,e);
             }
+
         });
     }
 
@@ -102,8 +109,11 @@ var osparc_dashboard = function() {
 
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/plants/kpis",
-            success:function(result){
+            url:"http://localhost:8001/api/aggregates",
+            success:function(data){
+
+            var result = data['kpis'];
+            if (typeof result != "undefined") {
                 for (var key in result) {
                     switch (result[key]['name']) {
                     case 'MonthlyInsolation':
@@ -150,6 +160,7 @@ var osparc_dashboard = function() {
                         break;
                     }
                 }
+            }
 
                 // $("#kpi_stats_results").html(markup);
                 // $("#kpi_stats_results").find("table").addClass("report_data_table").attr("id","osparc_dash_report");
@@ -177,7 +188,7 @@ var osparc_dashboard = function() {
 
     function getPlantDataByYearByDCRating(presentYear) {
 
-        $.ajax({method:"GET",dataType:"json",url:"http://localhost:8001/api/plants/stats?by=year&by=DCRating",
+        $.ajax({method:"GET",dataType:"json",url:"http://localhost:8001/api/aggregates?by=year&by=dcrating",
             success:function(data){
 
                 var plantsChartData = new google.visualization.DataTable(data);

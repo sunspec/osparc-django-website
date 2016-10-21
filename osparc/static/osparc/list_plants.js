@@ -10,9 +10,9 @@ var osparc_listplants = function() {
             url:"http://localhost:8001/api/plants",
             dataType:"json",
 
-        success:function(data) {
+        success:function(plants) {
 
-            var plants = data['plants']
+            // var plants = data['plants']
 
         	var ar = new Array(), j = -1;
 
@@ -31,9 +31,9 @@ var osparc_listplants = function() {
 			for (var key=0, size=plants.length; key<size; key++) {
 
     			ar[++j] = '<tr><td>';
-
-				// ar[++j] = '<a href="view_plant?link='plants[key].link'">View</a>&nbsp;';
-                ar[++j] = '<a href="view_plant">View</a>&nbsp;';
+                ar[++j] = '<a href="view_plant?link=';
+                ar[++j] = plants[key]['link'];
+                ar[++j] = '">View</a>&nbsp;';
 
 				ar[++j] = '<a href="list_plants" onclick="return confirm("Are you sure you want to delete this plant?");">Delete</a>';
     			ar[++j] = '</td><td>';
