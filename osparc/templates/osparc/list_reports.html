@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- Copyright SunSpec Alliance 2014-2016 All Rights Reserved -->
+<!-- <c:set var="activeTab" value="manage_plants" scope="session"/> -->
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/themes_blue.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/osparc.css' %}" />
+
+<head>
+  <meta charset="utf-8">
+  <title>oSPARC</title>
+</head>
+
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+<body>
+  <div w3-include-html="head_nav"></div>
+
+  <h2>Reports</h2>
+
+<div id="report_update_ts"></div>
+<div id="reports_list_div"  w3-include-html="reportruns_list"></div>
+
+<!--
+<jsp:include page="../includes/pager.jsp"/>
+-->
+
+<div id="overlay"></div>
+<div id="server_response_div">
+  <div class="o_category_filter">
+    <h2 id="server_response_title" class="o_category_filter_header"></h2>
+    <div id="server_response_text"></div>
+    <div id="close_btn_div" class="close_btn"><button class="close_window" os-data-overlay-id="server_response_div">Close</button></div>
+  </div>
+</div>
+
+<!--
+<jsp:include page="../includes/report_popup.jsp" />
+-->
+
+<div id="overlay"></div>
+<div id="o_footer">
+    <ul>
+        <li>Copyright &copy; 2014-2016 SunSpec Alliance</li>
+        <li><a href="http://www.sunspec.org/join-osparc-program/">Request Account</a></li>
+        <li><a href="http://sunspec.org/contact/" target="_blank">Contact Us</a></li>
+        <li><a href="http://www.sunspec.org/osparc-service-activation-agreement/" target="_blank">Terms of Use</a></li>
+  <li>Version 2.1</li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+
+<script>w3IncludeHTML();</script>
+
+<!-- from common_js.jsp -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+<script src="{% static 'osparc/jquery.tablesorter.min.js' %}"></script>
+<script src="{% static 'osparc/main.js' %}"></script>
+<script src="{% static 'osparc/list_reports.js' %}"></script>
+</body>
+</html>
+
+</body>
+</html>

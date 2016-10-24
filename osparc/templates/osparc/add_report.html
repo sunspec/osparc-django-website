@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<!-- Copyright SunSpec Alliance 2014-2016 All Rights Reserved -->
+<!-- <c:set var="activeTab" value="manage_plants" scope="session"/> -->
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/themes_blue.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/osparc.css' %}" />
+
+<head>
+  <meta charset="utf-8">
+  <title>oSPARC</title>
+</head>
+
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+<body>
+  <div w3-include-html="head_nav"></div>
+
+<h2>Create Report</h2>
+
+<form:form action="/reports/request" commandName="reportDef" method="POST">
+<div>
+  <div class="floatLeft"><label for="name">Report Name</label>
+    <form:input path="name" size="40"/>
+    <form:hidden path="plantLocation" />
+    <form:hidden path="locationType" />
+  </div>
+
+  <div id="plant_evalperiod_div" class="floatLeft">
+      <label for="timePeriod">Report timePeriod</label>
+        <select name="timePeriod" id="timePeriod">
+          <c:forEach items="${timePeriods}" var="timePeriod">
+            <option value="${timePeriod}">${timePeriod.label}</option>
+          </c:forEach>
+        </select>
+  </div>
+  <div class="clearfix"><p>&nbsp;</p></div>
+</div>
+
+<div class="o_category_filter">
+  <h2 class="o_category_filter_header">Plant Information</h2>
+  <div id="plant_attributes_div">
+
+      <div id="plant_state_div" class="floatLeft">
+        <label for="plantState">States</label>
+        <div>
+          <select name="plantState" id="plantState">
+          <option value="ANY"><spring:message code="globals.options.any"/></option>
+          <c:forEach items="${states}" var="state">
+              <option value="${state}">${state}</option>
+          </c:forEach>
+          </select>
+          <div class="error"></div>
+        </div>
+    </div>
+
+    <div id="plant_location_div" class="floatLeft">
+        <label for="plantZip">Postal Code</label>
+        <div>
+        <select name="plantZip" id="plantZip">
+            <option value="ANY"><spring:message code="globals.options.any"/></option>
+        </select>
+        <div class="error"></div>
+        </div>
+    </div>
+
+<!--
+    <div id="plant_types_div" class="floatLeft">
+        <label for="plantType"><spring:message code="plant.plantType"/></label>
+        <div>
+          <form:select path="plantType">
+            <form:options items="${plantTypes}" itemLabel="label" />
+          </form:select>
+          <form:errors path="plantType" cssClass="error" element="div"/>
+        </div>
+    </div>
+-->
+
+    <div id="plant_activation_div" class="floatLeft">
+        <label for="activationDateRange">Activation Date</label>
+        <div>
+          <form:select path="activationDateRange">
+            <form:options items="${activationDateRanges}" itemLabel="label" />
+          </form:select>
+          <form:errors path="activationDateRange" cssClass="error" element="div"/>
+        </div>
+    </div>
+
+<!-- Plant "Attribute" - Tags - to be implemented DB20161024
+    <jsp:include page="../plant/plant_tags.jsp" />
+-->
+
+
+    <div class="clearfix"></div>
+  </div><!-- close plant_attributes_div -->
+</div><!-- close category filter div -->
+
+<jsp:include page="../plant/plant_construction.jsp" />
+<jsp:include page="../plant/plant_participants.jsp" />
+
+<button id="submitReportRequest" type="button" class="osparcButton"><spring:message code="report.request.submit"/></button> <a href="/reports"> <button type="button" o-data-url="reports" class="osparcButton o_cancel"><spring:message code="plant.create.cancel"/></button></a>
+</form:form>
+  <div id="overlay"></div>
+
+    <div id="server_response_div">
+      <div class="o_category_filter">
+      <h2 id="server_response_title" class="o_category_filter_header"></h2>
+      <div id="server_response_text"></div>
+      <div id="close_btn_div" class="close_btn"><button class="close_window" os-data-overlay-id="server_response_div"><spring:message code="globals.close"/></button></div>
+    </div>
+    </div>
+
+<div id="overlay"></div>
+<div id="o_footer">
+    <ul>
+        <li>Copyright &copy; 2014-2016 SunSpec Alliance</li>
+        <li><a href="http://www.sunspec.org/join-osparc-program/">Request Account</a></li>
+        <li><a href="http://sunspec.org/contact/" target="_blank">Contact Us</a></li>
+        <li><a href="http://www.sunspec.org/osparc-service-activation-agreement/" target="_blank">Terms of Use</a></li>
+  <li>Version 2.1</li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+
+<script>w3IncludeHTML();</script>
+
+<!-- from common_js.jsp -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+<script src="{% static 'osparc/jquery.tablesorter.min.js' %}"></script>
+<script src="{% static 'osparc/main.js' %}"></script>
+
+<script src="/resources/js/reports.js"></script>
+  <script>
+      $(document).ready(function(){
+        osparc_reports.initReportRequest();
+      });
+
+  </script>
+</body>
+</html>
