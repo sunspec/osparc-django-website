@@ -26,9 +26,6 @@ var osparc_viewplant = function() {
             dataType:"json",
 
         success:function(data) {
-
-            console.log(data);
- 			
  			document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
 	    },
             
