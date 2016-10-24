@@ -31,8 +31,8 @@ var osparc_listplants = function() {
 			for (var key=0, size=plants.length; key<size; key++) {
 
     			ar[++j] = '<tr><td>';
-                ar[++j] = '<a href="view_plant?link=';
-                ar[++j] = plants[key]['link'];
+                ar[++j] = '<a href="view_plant?uuid=';
+                ar[++j] = plants[key]['uuid'];
                 ar[++j] = '">View</a>&nbsp;';
 
 				ar[++j] = '<a href="list_plants" onclick="return confirm("Are you sure you want to delete this plant?");">Delete</a>';
@@ -46,9 +46,7 @@ var osparc_listplants = function() {
      			ar[++j] = plants[key]['activationdate'];
      			ar[++j] = '</td><td>';
      			ar[++j] = plants[key]['dcrating'];
-     			ar[++j] = '</td><td style="display:none;">';
-                ar[++j] = plants[key]['link'];
-                ar[++j] = '</td></tr>';
+     			ar[++j] = '</td></tr>';
  			}
  			
  			document.getElementById('plantlist').innerHTML = ar.join(''); 

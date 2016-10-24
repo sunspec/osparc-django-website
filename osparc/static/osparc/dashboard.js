@@ -189,7 +189,11 @@ var osparc_dashboard = function() {
     function getPlantDataByYearByDCRating(presentYear) {
 
         $.ajax({method:"GET",dataType:"json",url:"http://localhost:8001/api/aggregates?by=year&by=dcrating",
-            success:function(data){
+            success:function(response){
+
+                var data = response['byyearanddcrating'];
+                if (typeof data != "undefined") {
+
 
                 var plantsChartData = new google.visualization.DataTable(data);
                 plantsChartData.addColumn('string','Year');
@@ -211,6 +215,7 @@ var osparc_dashboard = function() {
                 }
 
                 renderPlantsChart(plantsChartData);
+            }
             },
             error:function(xhr, status, e) {
                     osparc_ui.showAjaxError(xhr,status,e);
