@@ -8,5 +8,8 @@ urlpatterns = [
     url(r'^add_plant$', views.add_plant, name='add_plant'),
     url(r'^view_plant$', views.view_plant, name='view_plant'),
     url(r'^list_plants$', views.list_plants, name='list_plants'),
-    url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail')
+
+    url(r'^add_report$', views.add_report, name='add_report'),
+    # url(r'^view_report$', views.view_report, name='view_report'),
+    url(r'^list_reports$', views.list_reports, name='list_reports'),
 ]

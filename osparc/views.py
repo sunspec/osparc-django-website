@@ -16,33 +16,28 @@ def view_plant(request):
 	return render(request, 'osparc/view_plant.html')	
 
 def list_plants(request):
-	print "in list_plants"
 	context = {
 		'account':'oSPARC Admin'
 	}
 	return render(request, 'osparc/list_plants.html', context)
 
 def add_plant(request):
-	print "in add_plant"
 	context = {
 		'account':'oSPARC Admin'
 	}
 	return render(request, 'osparc/add_plant.html', context)
 
-def api_add_plant(request):
-   return redirect("https://localhost:8001/api/plants")
+def add_report(request):
+	context = {
+		'account':'oSPARC Admin'
+	}
+	return render(request, 'osparc/add_report.html', context)
 
-def detail(request, question_id):
-	context = { 'id':question_id}
-	return render(request,'osparc/detail.html', context)
+def view_report(request):
+	return render(request, 'osparc/view_report.html')	
 
-def results(request, question_id):
-	print request
-	print question_id
-	response = "You're looking at the results of question %s."
-	return HttpResponse(response % question_id)
-
-def vote(request, question_id):
-	print request
-	print question_id
-	return HttpResponse("You're voting on question %s." % question_id)
+def list_reports(request):
+	context = {
+		'account':'oSPARC Admin'
+	}
+	return render(request, 'osparc/list_reports.html', context)
