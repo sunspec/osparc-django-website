@@ -1,454 +1,123 @@
 <!DOCTYPE html>
 <html>
-<head>
+<!-- Copyright SunSpec Alliance 2014-2016 All Rights Reserved -->
+<!-- <c:set var="activeTab" value="manage_plants" scope="session"/> -->
+{% load static %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/themes_blue.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/osparc.css' %}" />
+
+<head>
+  <meta charset="utf-8">
+  <title>oSPARC</title>
 </head>
 
-  
-<body class="">
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+<body>
+  <div w3-include-html="head_nav"></div>
+
+  <h2>Add Plant</h2>
 
     <div class="well tab-content">
         <div class="tab-pane" id="post-object-form">
-            <form action="http://localhost:8001/api/plants" method="POST" enctype="multipart/form-data" class="form-horizontal" novalidate>
+            <form action="javascript:osparc_addplant.addPlant()" class="form-horizontal">
                 <fieldset>
-                    <input type='hidden' name='csrfmiddlewaretoken' value='QsmTa0gGg4TRI3fE02JSPcveknCZ6QvneRwLSlF1iQwTgaTZ2yhYoe2byPTYpL8j' />
-                        <div class="form-group ">
-                            <label class="col-sm-2 control-label ">PlantUUID</label>
-                            <div class="col-sm-10">
-                                <input name="plantUUID" class="form-control" type="text"  >
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                          <label class="col-sm-2 control-label ">Name</label>
-                          <div class="col-sm-10">
-                            <input name="name" class="form-control" type="text"  >
-                          </div>
-                        </div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      Description
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="description" class="form-control" type="text"  >
-
-    
-
-    
+<!--                 <input type='hidden' name='csrfmiddlewaretoken' value='QsmTa0gGg4TRI3fE02JSPcveknCZ6QvneRwLSlF1iQwTgaTZ2yhYoe2byPTYpL8j' />
+ -->
+                    <input type="hidden" name="uuid" class="form-control" type="text">
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">Name</label>
+                      <input name="name" class="form-control" type="text"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">Description</label>
+                      <input name="description" class="form-control" type="text"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">ActivationDate</label>
+                      <input name="activationdate" class="form-control" type="date"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">State</label>
+                      <input name="state" class="form-control" type="text"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">PostalCode</label>
+                      <input name="postalcode" class="form-control" type="text"  >
+                    </div>
+                    <input type="hidden" name="county" class="form-control" type="text"  >
+                    <input type="hidden" name="city" class="form-control" type="text"  >
+                    <input type="hidden" name="latitude" class="form-control" type="text"  >
+                    <input type="hidden" name="longitude" class="form-control" type="text"  >
+                    <input type="hidden" name="timezone" class="form-control" type="text"  >
+                    <input type="hidden" name="weathersource" class="form-control" type="text"  >
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">DCRating</label>
+                      <input name="dcrating" class="form-control" type="text"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">TrackerType</label>
+                      <input name="trackertype" class="form-control" type="text"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">Tilt</label>
+                      <input name="tilt" class="form-control" type="number"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">Azimuth</label>
+                      <input name="azimuth" class="form-control" type="number"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">StorageOriginalCapacity</label>
+                      <input name="storageoriginalcapacity" class="form-control" type="text"  >
+                    </div>
+                    <input type="hidden" name="accountid" class="form-control" type="text" value="admin" >
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">VersionID</label>
+                      <input name="versionid" class="form-control" type="number"  >
+                    </div>
+                    <input type="hidden" name="solaranywheresite" class="form-control" type="text"  >
+                    <div class="form-actions">
+                      <button class="btn btn-primary" title="POST to add a plant">Add Plant</button>
+                    </div>
+              </fieldset>
+            </form>
+        </div>
+    </div>
   </div>
+
+
+<div id="overlay"></div>
+<div id="o_footer">
+    <ul>
+        <li>Copyright &copy; 2014-2016 SunSpec Alliance</li>
+        <li><a href="http://www.sunspec.org/join-osparc-program/">Request Account</a></li>
+        <li><a href="http://sunspec.org/contact/" target="_blank">Contact Us</a></li>
+        <li><a href="http://www.sunspec.org/osparc-service-activation-agreement/" target="_blank">Terms of Use</a></li>
+  <li>Version 2.1</li>
+    </ul>
+    <div class="clearfix"></div>
 </div>
 
-  
+<script>w3IncludeHTML();</script>
 
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      ActivationDate
-    </label>
-  
+<!-- from common_js.jsp -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 
-  <div class="col-sm-10">
-    <input name="activationDate" class="form-control" type="date"  >
-
+<script src="{% static 'osparc/jquery.tablesorter.min.js' %}"></script>
+<script src="{% static 'osparc/main.js' %}"></script>
+<script src="{% static 'osparc/add_plant.js' %}"></script>
     
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      PostalCode
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="postalCode" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      State
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="state" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      County
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="county" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      City
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="city" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      Latitude
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="latitude" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      Longitude
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="longitude" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      TimeZone
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="timeZone" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      WeatherSource
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="weatherSource" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      DCRating
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="DCRating" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      Derate
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="derate" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      TrackerType
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="trackerType" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      Tilt
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="tilt" class="form-control" type="number"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      Azimuth
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="azimuth" class="form-control" type="number"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      StorageOriginalCapacity
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="storageOriginalCapacity" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      StorageCurrentCapacity
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="storageCurrentCapacity" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      StorageStateOfCharge
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="storageStateOfCharge" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      AccountID
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="accountID" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      VersionID
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="versionID" class="form-control" type="number"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-  
-    <div class="form-group ">
-  
-    <label class="col-sm-2 control-label ">
-      SolarAnywhereSite
-    </label>
-  
-
-  <div class="col-sm-10">
-    <input name="solarAnywhereSite" class="form-control" type="text"  >
-
-    
-
-    
-  </div>
-</div>
-
-  
-
-
-                              <div class="form-actions">
-                                <button class="btn btn-primary" title="POST to add a plant">POST</button>
-                              </div>
-        </fieldset>
-      </form>
-                        
-                      </div>
-                    
-        </div><!-- /.content -->
-      </div><!-- /.container -->
-    </div><!-- ./wrapper -->
-
-    
-
-    
+<!--
       <script>
         window.drf = {
           csrfHeaderName: "X-CSRFTOKEN",
           csrfCookieName: "csrftoken"
         };
       </script>
-      <script>
-      </script>
+-->
+
+</body>
+</html>
