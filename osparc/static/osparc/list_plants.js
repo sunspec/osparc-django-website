@@ -4,6 +4,20 @@ var osparc_listplants = function() {
 		getPlants()
 	}
 
+    function getParameterByName(name) {
+        var query  = window.location.search.substring(1);
+        var value = query.search("=");
+        return query.substring(value+1);
+    }
+
+    function getUuid() {
+        return getParameterByName('uuid');
+    }
+
+    function getName() {
+        return getParameterByName('name');
+    }
+
 	function getPlants() {
 		$.ajax( {
             method:"GET",
@@ -23,8 +37,8 @@ var osparc_listplants = function() {
         	ar[++j] = '<th class="o_category_filter_header">Postal Code</th>';
         	ar[++j] = '<th class="o_category_filter_header">Activation Date</th>';
         	ar[++j] = '<th class="o_category_filter_header">DC Rating</th>';
-        	ar[++j] = '<th class="o_category_filter_header">Last Import Date</th>';
-        	ar[++j] = '<th class="o_category_filter_header">Last Import Status</th>';
+        	// ar[++j] = '<th class="o_category_filter_header">Last Import Date</th>';
+        	// ar[++j] = '<th class="o_category_filter_header">Last Import Status</th>';
             ar[++j] = '<th style="display:none;"></th>'
         	ar[++j] = '</tr></thead>';
 
@@ -35,7 +49,11 @@ var osparc_listplants = function() {
                 ar[++j] = plants[key]['uuid'];
                 ar[++j] = '">View</a>&nbsp;';
 
-				ar[++j] = '<a href="list_plants" onclick="return confirm("Are you sure you want to delete this plant?");">Delete</a>';
+				// ar[++j] = '<a href="delete_plant?uuid=';
+    //             ar[++j] = plants[key]['uuid'];
+    //             ar[++j] = '"';
+    //             ar[++j] = ' onclick="return confirm();">Delete</a>';
+                
     			ar[++j] = '</td><td>';
     			ar[++j] = plants[key]['name'];
     			ar[++j] = '</td><td>';
@@ -58,8 +76,33 @@ var osparc_listplants = function() {
     	});
 	}
 
+    function deletePlant() {
+
+        console.log("in deletePlant");
+
+        if ( confirm("are you sure you want to delete plant "+getName()+"?") == false ) {
+            return;
+        }   
+
+        url = "http://localhost:8001/api/plants?uuid="+getUuid();
+
+        $.ajax( {
+            method:"DELETE",
+            url:url,
+            dataType:"json",
+
+        success:function(plants) {
+            getPlants();
+        },
+        error:function(xhr, status, e) {
+            osparc_ui.showAjaxError(xhr,status,e);
+        }
+        });
+    }
+
     return {
-        init:init
+        init:init,
+        deletePlant:deletePlant
     }
 }();
 

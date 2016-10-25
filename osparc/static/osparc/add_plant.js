@@ -26,7 +26,8 @@ var osparc_addplant = function() {
             data:postArray,
 
         success:function(data) {
-            document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
+              $( ".result" ).load( "plant_added" );
+            // document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
         },
             
         error:function(xhr, status, e) {
@@ -35,7 +36,7 @@ var osparc_addplant = function() {
         });
 
 
-        return false;
+        return true;
     }
 
     return {

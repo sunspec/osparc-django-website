@@ -27,6 +27,12 @@ def add_plant(request):
 	}
 	return render(request, 'osparc/add_plant.html', context)
 
+def plant_added(request):
+	context = {
+		'account':'oSPARC Admin'
+	}
+	return render(request, 'osparc/plant_added.html', context)
+
 def add_report(request):
 	context = {
 		'account':'oSPARC Admin'

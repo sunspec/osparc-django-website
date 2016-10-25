@@ -6,9 +6,7 @@ var osparc_viewplant = function() {
 
     function getParameterByName(name) {
         var query  = window.location.search.substring(1);
-
         var value = query.search("=");
-
         return query.substring(value+1);
     }
 
