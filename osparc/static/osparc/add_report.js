@@ -1,6 +1,10 @@
-var osparc_addplant = function() {
+var osparc_addreport = function() {
 
-    function addPlant() {
+    // Add a report definition. 
+    //
+    // A side-effect on the server is to run the report and create a report run.
+
+    function addReport() {
 
         var inputArray = $('input').serializeArray();
 
@@ -16,7 +20,7 @@ var osparc_addplant = function() {
             }
         });
 
-        url = "http://localhost:8001/api/plants";
+        url = "http://localhost:8001/api/queries";
 
         $.ajax( {
             method:"POST",
@@ -25,7 +29,7 @@ var osparc_addplant = function() {
             data:postArray,
 
         success:function(data) {
-              $( ".result" ).load( "plant_added" );
+              // $( ".result" ).load( "report_added" );
             // document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
         },
             
@@ -34,11 +38,10 @@ var osparc_addplant = function() {
         }
         });
 
-
         return true;
     }
 
     return {
-        addPlant:addPlant
+        addReport:addReport
     }
 }();

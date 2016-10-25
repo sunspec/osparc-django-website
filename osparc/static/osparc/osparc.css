@@ -365,7 +365,7 @@ select {
 #plant_list_div {
     padding-bottom:15px;
 }
-#plant_attributes_div, #account_attributes_div {
+#plant_attributes_div, #account_attributes_div, #report_attributes_div {
     padding-top:5px;
 }
 #plant_attributes_div label {

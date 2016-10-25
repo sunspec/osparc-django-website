@@ -244,22 +244,22 @@ var osparc_dashboard = function() {
         $(shorterDiv).css("height",$(tallerDiv).height());
     }
 
-    function postAddPlant(postData) {
-        console.log("postAddPlant");
-        $.ajax({
-            type: "post",
-            url: "url",
-            data: postData,
-            contentType: "application/x-www-form-urlencoded",
-            success: function(responseData, textStatus, jqXHR) {
-            console.log("postAddPlant success");
-                alert("data saved")
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log(errorThrown);
-            }
-        })
-    }
+    // function postAddPlant(postData) {
+    //     console.log("postAddPlant");
+    //     $.ajax({
+    //         type: "post",
+    //         url: "url",
+    //         data: postData,
+    //         contentType: "application/x-www-form-urlencoded",
+    //         success: function(responseData, textStatus, jqXHR) {
+    //         console.log("postAddPlant success");
+    //             alert("data saved")
+    //         },
+    //         error: function(jqXHR, textStatus, errorThrown) {
+    //             console.log(errorThrown);
+    //         }
+    //     })
+    // }
 
     return {
         init:init,

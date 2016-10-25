@@ -20,97 +20,95 @@
 
 <h2>Create Report</h2>
 
-<form:form action="/reports/request" commandName="reportDef" method="POST">
-<div>
-  <div class="floatLeft"><label for="name">Report Name</label>
-    <form:input path="name" size="40"/>
-    <form:hidden path="plantLocation" />
-    <form:hidden path="locationType" />
-  </div>
+<form action="javascript:osparc_addreport.addReport()" class="form-horizontal">
 
-  <div id="plant_evalperiod_div" class="floatLeft">
-      <label for="timePeriod">Report timePeriod</label>
-        <select name="timePeriod" id="timePeriod">
-          <c:forEach items="${timePeriods}" var="timePeriod">
-            <option value="${timePeriod}">${timePeriod.label}</option>
-          </c:forEach>
-        </select>
-  </div>
-  <div class="clearfix"><p>&nbsp;</p></div>
-</div>
+  <div class="o_category_filter">
 
-<div class="o_category_filter">
-  <h2 class="o_category_filter_header">Plant Information</h2>
-  <div id="plant_attributes_div">
+    <h2 class="o_category_filter_header">Report Attributes</h2>
 
-      <div id="plant_state_div" class="floatLeft">
-        <label for="plantState">States</label>
-        <div>
-          <select name="plantState" id="plantState">
-          <option value="ANY"><spring:message code="globals.options.any"/></option>
-          <c:forEach items="${states}" var="state">
-              <option value="${state}">${state}</option>
-          </c:forEach>
+    <div id="report_attributes_div">
+
+      <div class="floatLeft">
+        <label for="name">Report Name</label>
+        <div><input name="name"/></div>
+      </div>
+
+      <div id="plant_evalperiod_div" class="floatLeft">
+          <label>Initial Measurement Date</label>
+          <div><input name="observationstartdate" class="form-control" type="date" value="2001-01-01"></div>
+      </div>
+      <div id="plant_evalperiod_div" class="floatLeft">
+          <label>Final Measurement Date</label>
+          <div><input name="observationenddate" class="form-control" type="date" value="2016-12-31"></div>
+      </div>
+
+      <div class="clearfix"><p>&nbsp;</p></div>
+    </div>
+
+  </div><!-- close category filter div -->
+
+  <div class="o_category_filter">
+
+    <h2 class="o_category_filter_header">Plants Included</h2>
+
+    <div id="plant_attributes_div">
+
+        <div id="plant_state_div" class="floatLeft">
+          <label for="plantState">States</label>
+          <div>
+            <select name="plantState" id="plantState">
+            <option value="ANY">all</option>
+            <c:forEach items="${states}" var="state">
+                <option value="${state}">${state}</option>
+            </c:forEach>
+            </select>
+            <div class="error"></div>
+          </div>
+        </div>
+
+        <div id="plant_location_div" class="floatLeft">
+          <label for="plantZip">Postal Code</label>
+          <div>
+          <select name="plantZip" id="plantZip">
+              <option value="ANY">all</option>
           </select>
           <div class="error"></div>
+          </div>
         </div>
-    </div>
 
-    <div id="plant_location_div" class="floatLeft">
-        <label for="plantZip">Postal Code</label>
-        <div>
-        <select name="plantZip" id="plantZip">
-            <option value="ANY"><spring:message code="globals.options.any"/></option>
-        </select>
-        <div class="error"></div>
+        <div id="plant_activation_div" class="floatLeft">
+          <label>Plants Activated Before</label>
+          <div><input name="plantlatestactivationdate" class="form-control" type="date" value="2016-12-31"></div>
         </div>
-    </div>
 
-<!--
-    <div id="plant_types_div" class="floatLeft">
-        <label for="plantType"><spring:message code="plant.plantType"/></label>
-        <div>
-          <form:select path="plantType">
-            <form:options items="${plantTypes}" itemLabel="label" />
-          </form:select>
-          <form:errors path="plantType" cssClass="error" element="div"/>
-        </div>
-    </div>
--->
+  <!-- Plant "Attribute" - Tags - to be implemented DB20161024
+      <jsp:include page="../plant/plant_tags.jsp" />
+  -->
 
-    <div id="plant_activation_div" class="floatLeft">
-        <label for="activationDateRange">Activation Date</label>
-        <div>
-          <form:select path="activationDateRange">
-            <form:options items="${activationDateRanges}" itemLabel="label" />
-          </form:select>
-          <form:errors path="activationDateRange" cssClass="error" element="div"/>
-        </div>
-    </div>
+      <div class="clearfix"></div>
 
-<!-- Plant "Attribute" - Tags - to be implemented DB20161024
-    <jsp:include page="../plant/plant_tags.jsp" />
--->
+    </div><!-- close plant_attributes_div -->
+  </div><!-- close category filter div -->
 
+  <!-- <jsp:include page="../plant/plant_construction.jsp" />
+  <jsp:include page="../plant/plant_participants.jsp" />
+   -->
 
-    <div class="clearfix"></div>
-  </div><!-- close plant_attributes_div -->
-</div><!-- close category filter div -->
+  <div class="form-actions">
+    <button class="osparcButton">Create and Run Report</button>
+    <button class="osparcButton o_cancel">Cancel</button>
+  </div>
+</form>
 
-<jsp:include page="../plant/plant_construction.jsp" />
-<jsp:include page="../plant/plant_participants.jsp" />
-
-<button id="submitReportRequest" type="button" class="osparcButton"><spring:message code="report.request.submit"/></button> <a href="/reports"> <button type="button" o-data-url="reports" class="osparcButton o_cancel"><spring:message code="plant.create.cancel"/></button></a>
-</form:form>
-  <div id="overlay"></div>
-
+<!--   <div id="overlay"></div>
     <div id="server_response_div">
       <div class="o_category_filter">
       <h2 id="server_response_title" class="o_category_filter_header"></h2>
       <div id="server_response_text"></div>
       <div id="close_btn_div" class="close_btn"><button class="close_window" os-data-overlay-id="server_response_div"><spring:message code="globals.close"/></button></div>
     </div>
-    </div>
+  </div>
+ -->
 
 <div id="overlay"></div>
 <div id="o_footer">
@@ -132,13 +130,6 @@
 
 <script src="{% static 'osparc/jquery.tablesorter.min.js' %}"></script>
 <script src="{% static 'osparc/main.js' %}"></script>
-
-<script src="/resources/js/reports.js"></script>
-  <script>
-      $(document).ready(function(){
-        osparc_reports.initReportRequest();
-      });
-
-  </script>
+<script src="{% static 'osparc/add_report.js' %}"></script>
 </body>
 </html>
