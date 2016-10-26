@@ -262,8 +262,7 @@ var osparc_dashboard = function() {
     // }
 
     return {
-        init:init,
-        postAddPlant:postAddPlant
+        init:init
     }
 }();
 

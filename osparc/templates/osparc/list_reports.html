@@ -19,9 +19,32 @@
 
   <h2>Reports</h2>
 
-<div id="report_update_ts"></div>
-<div id="reports_list_div"  w3-include-html="reportruns_list"></div>
+<div id="refresh_overlay" style="display:none;">
+  <div style="position:absolute;top:45%;left:47%;"><img src="{% static 'osparc/images/ajax-loader.gif' %}"/></div>
+</div>
 
+<table id="ss_reportList" class="tablesorter">
+    <thead>
+    <tr>
+      <th class="o_category_filter_header">Report Name</th>
+      <th class="o_category_filter_header">Status</th>
+      <th class="o_category_filter_header">Time Requested</th>
+      <th class="o_category_filter_header">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+
+<!-- from  <jsp:include page="../includes/report_popup.jsp" /> -->
+    <div id="reportOverlay">
+      <div class="o_category_filter">
+      <h2 id="report_title" class="o_category_filter_header"></h2>
+      <div id="report_text"></div>
+      <div id="close_report_btn_div" class="close_btn"><button class="close_window osparcButton" os-data-overlay-id="reportOverlay">Close</button></div>
+      </div>
+    </div>
 <!--
 <jsp:include page="../includes/pager.jsp"/>
 -->

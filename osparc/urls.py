@@ -12,6 +12,6 @@ urlpatterns = [
     url(r'^list_plants$', views.list_plants, name='list_plants'),
 
     url(r'^add_report$', views.add_report, name='add_report'),
-    # url(r'^view_report$', views.view_report, name='view_report'),
+    url(r'^view_report$', views.view_report, name='view_report'),
     url(r'^list_reports$', views.list_reports, name='list_reports'),
 ]

@@ -29,7 +29,8 @@ var osparc_addreport = function() {
             data:postArray,
 
         success:function(data) {
-              // $( ".result" ).load( "report_added" );
+            console.log("in addReport.success");
+            $( ".result" ).load( "list_reports" );
             // document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
         },
             
