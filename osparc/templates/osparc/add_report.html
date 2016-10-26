@@ -52,38 +52,26 @@
     <h2 class="o_category_filter_header">Plants Included</h2>
 
     <div id="plant_attributes_div">
-
         <div id="plant_state_div" class="floatLeft">
-          <label for="plantState">States</label>
-          <div>
-            <select name="plantState" id="plantState">
-            <option value="ANY">all</option>
-            <c:forEach items="${states}" var="state">
-                <option value="${state}">${state}</option>
-            </c:forEach>
-            </select>
-            <div class="error"></div>
-          </div>
+          <label for="plantState">Attribute</label>
+          <div><input name="plantfilterattribute"/></div>
+        </div>
+        <div id="plant_state_div" class="floatLeft">
+          <label for="plantState">Comparison Operation</label>
+          <div><input name="plantfilteroperation"/></div>
+        </div>
+        <div id="plant_state_div" class="floatLeft">
+          <label for="plantState">Value</label>
+          <div><input name="plantfiltervalue"/></div>
         </div>
 
-        <div id="plant_location_div" class="floatLeft">
-          <label for="plantZip">Postal Code</label>
-          <div>
-          <select name="plantZip" id="plantZip">
-              <option value="ANY">all</option>
-          </select>
-          <div class="error"></div>
-          </div>
-        </div>
+<!-- TBD XXX implement drop-down of possible attributes and operations. Valid attributes are plant
+     attributes, from the osparc web services models.py Plant class. Valid operations are from the django
+     field lookups list, see https://docs.djangoproject.com/en/1.10/ref/models/querysets/#field-lookups.
 
-        <div id="plant_activation_div" class="floatLeft">
-          <label>Plants Activated Before</label>
-          <div><input name="plantlatestactivationdate" class="form-control" type="date" value="2016-12-31"></div>
-        </div>
-
-  <!-- Plant "Attribute" - Tags - to be implemented DB20161024
-      <jsp:include page="../plant/plant_tags.jsp" />
-  -->
+     ops: exact, iexact, contains, icontains, in, gt, gte, lt, lte, startswith, istartswith, endswith, iendswith,
+     range, date, year, month, day, week_day, hour, minute, second, isnull, regex, iregex.
+-->
 
       <div class="clearfix"></div>
 
