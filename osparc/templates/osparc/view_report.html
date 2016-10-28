@@ -19,7 +19,104 @@
 
   <h2>Report</h2>
 
-  <div id="reportdetails"></div>
+  <div class="o_category_filter">
+
+    <h2 class="o_category_filter_header">Report Attributes</h2>
+
+    <div id="report_attributes_div">
+
+      <div class="floatLeft">
+        <label for="name">Report Name</label>
+        <div><p id='report_name'></p></div>
+      </div>
+
+      <div id="plant_evalperiod_div" class="floatLeft">
+          <label>Initial Measurement Date</label>
+          <div><p id='observationstartdate'</p></div>
+      </div>
+      <div id="plant_evalperiod_div" class="floatLeft">
+          <label>Final Measurement Date</label>
+          <div><p id='observationenddate'</p></div>
+      </div>
+
+      <div id="plant_evalperiod_div" class="floatLeft">
+          <label>Plants Reporting Energy</label>
+          <div><p id='numberofplants'</p></div>
+      </div>
+
+      <div id="plant_evalperiod_div" class="floatLeft">
+          <label>Total DC Rating</label>
+          <div><p id='totaldccapacity'</p></div>
+      </div>
+
+      <div class="clearfix"><p>&nbsp;</p></div>
+    </div>
+  </div>
+
+  <!-- <div id="reportdetails"></div> -->
+  <div id="o_stats_wrapper" class="o_category_filter" style="float:left; width:100%;">
+      <h2 class="o_category_filter_header">Energy Performance Metrics</h2>
+      <div id="kpi_stats" align="center">
+        <div id="kpi_stats_results">
+          <table class="tablesorter">
+            <thead>
+            <tr><th>KPI</th><th>Mean</th><th>Median</th><th>Min</th><th>Max</th></tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><a href="http://www.sunspec.org/go/osparc">DC Power Rating (kW)</a></td>
+              <td id='dc_mean'></td>
+              <td id='dc_med'></td>
+              <td id='dc_min'></td>
+              <td id='dc_max'></td>
+            </tr>
+            <tr>
+              <td><a href="http://www.sunspec.org/go/osparc">Monthly Insolation (kWh/m<sup>2</sup>)</a></td>
+              <td id='ghi_mean'></td>
+              <td id='ghi_med'></td>
+              <td id='ghi_min'></td>
+              <td id='ghi_max'></td>
+            </tr>
+            <tr>
+              <td><a href="http://www.sunspec.org/go/osparc">Monthly Generated Energy (kWh)</a></td>
+              <td id='wh_mean'></td>
+              <td id='wh_med'></td>
+              <td id='wh_min'></td>
+              <td id='wh_max'></td>
+            </tr>
+            <tr>
+              <td><a href="http://www.sunspec.org/go/osparc">Monthly Yield (kWh/kWp)</a></td>
+              <td id='yield_mean'></td>
+              <td id='yield_med'></td>
+              <td id='yield_min'></td>
+              <td id='yield_max'></td>
+            </tr>
+            <tr>
+              <td><a href="http://www.sunspec.org/go/osparc">Performance Ratio (ratio)</a></td>
+              <td id='pr_mean'></td>
+              <td id='pr_med'></td>
+              <td id='pr_min'></td>
+              <td id='pr_max'></td>
+            </tr>
+            <tr>
+              <td><a href="http://www.sunspec.org/go/osparc">Storage Capacity (kWh)</a></td> 
+              <td id='stor_mean'></td>
+              <td id='stor_med'></td>
+              <td id='stor_min'></td>
+              <td id='stor_max'></td>
+            </tr>
+            <tr>
+              <td><a href="http://www.sunspec.org/go/osparc">Storage State of Health (%)</a></td> 
+              <td id='soh_mean'></td>
+              <td id='soh_med'></td>
+              <td id='soh_min'></td>
+              <td id='soh_max'></td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
 
 <script>w3IncludeHTML();</script>
 
