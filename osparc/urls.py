@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^delete_plant$', views.list_plants, name='delete_plant'),	# list after the client deletes
     url(r'^view_plant$', views.view_plant, name='view_plant'),
     url(r'^list_plants$', views.list_plants, name='list_plants'),
+    url(r'^report_added$', views.report_added, name='report_added'),
 
     url(r'^add_report$', views.add_report, name='add_report'),
     url(r'^view_report$', views.view_report, name='view_report'),

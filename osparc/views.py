@@ -47,3 +47,9 @@ def list_reports(request):
 		'account':'oSPARC Admin'
 	}
 	return render(request, 'osparc/list_reports.html', context)
+
+def report_added(request):
+	context = {
+		'account':'oSPARC Admin'
+	}
+	return render(request, 'osparc/report_added.html', context)

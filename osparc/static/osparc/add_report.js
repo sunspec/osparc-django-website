@@ -30,7 +30,7 @@ var osparc_addreport = function() {
 
         success:function(data) {
             console.log("in addReport.success");
-            $( ".result" ).load( "list_reports" );
+            $( ".result" ).load( "report_added" );
             // document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
         },
             
