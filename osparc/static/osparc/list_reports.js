@@ -40,23 +40,39 @@ var osparc_listreports = function() {
         return td;
     }
 
+    function summarizeReport( report ) {
+        // Note that col 0 contains the run's id. We don't currently use it..
+        tr = document.createElement('tr');
+
+        td = document.createElement('td');
+        tn = document.createTextNode(report['reportdefinition']['name']);
+        td.appendChild(tn);
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        tn = document.createTextNode(statusText(report['status']));
+        td.appendChild(tn);
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        tn = document.createTextNode(report['runsubmittime']);
+        td.appendChild(tn);
+        tr.appendChild(td);
+
+        tr.appendChild( actions(report) );
+
+        return tr;
+    }
+
     function writeReports(reports) {
 
         var body, tr, td, tn, row, col;
         body = document.getElementsByTagName('tbody')[0];
 
         for (row=0; row < reports.length; row++) {
-            tr = document.createElement('tr');
+            
+            body.appendChild( summarizeReport(reports[row]) );
 
-            // Note that col 0 contains the run's id. We don't currently use it..
-            for (col=1; col < reports[row].length; col++) {
-                td = document.createElement('td');
-                tn = document.createTextNode(reports[row][col]);
-                td.appendChild(tn);
-                tr.appendChild(td);
-            }
-            tr.appendChild( actions(reports[row]) );
-            body.appendChild(tr);
         }
     }
 
@@ -89,28 +105,16 @@ var osparc_listreports = function() {
     }
 
 	function getReports() {
-		$.ajax( {
+        $.ajax( {
             method:"GET",
-            url:"http://localhost:8001/api/queries",
+            url:"http://localhost:8001/api/reports",
             dataType:"json",
 
-        success:function(queries) {
-            $.ajax( {
-                method:"GET",
-                url:"http://localhost:8001/api/reports",
-                dataType:"json",
+        success:function(runs) {
 
-            success:function(runs) {
-
-                // We have the queries and results (runs); combine to form the 'results'
-                writeReports(combine(runs,queries));
-    	    },
-
-            error:function(xhr, status, e) {
-                osparc_ui.showAjaxError(xhr,status,e);
-            }
-            });
-   	    },
+            // We have the queries and results (runs); combine to form the 'results'
+            writeReports(runs);
+	    },
 
         error:function(xhr, status, e) {
             osparc_ui.showAjaxError(xhr,status,e);

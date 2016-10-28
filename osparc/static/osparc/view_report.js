@@ -26,8 +26,8 @@ var osparc_viewreport = function() {
         success:function(data) {
  			// document.getElementById('reportdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
             document.getElementById('report_name').innerHTML = data['id'];
-            document.getElementById('observationstartdate').innerHTML = data['observationstartdate'];
-            document.getElementById('observationenddate').innerHTML = data['observationenddate'];
+            document.getElementById('firstmeasurementdate').innerHTML = data['firstmeasurementdate'];
+            document.getElementById('firstmeasurementdate').innerHTML = data['firstmeasurementdate'];
             document.getElementById('numberofplants').innerHTML = data['numberofplants'];
             document.getElementById('totaldccapacity').innerHTML = data['totaldcrating'];
 
