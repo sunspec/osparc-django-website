@@ -25,9 +25,9 @@ var osparc_listreports = function() {
         return getParameterByName('name');
     }
 
-    function actions( run ) {
+    function actions( runId ) {
         var att = document.createAttribute("href");
-        att.value = "view_report?id="+run[0];   // 0th col is id
+        att.value = "view_report?id="+runId;
         var a = document.createElement('a');
         a.setAttributeNode(att);
         var an = document.createTextNode('View');
@@ -59,7 +59,7 @@ var osparc_listreports = function() {
         td.appendChild(tn);
         tr.appendChild(td);
 
-        tr.appendChild( actions(report) );
+        tr.appendChild( actions(report['id']) );
 
         return tr;
     }
