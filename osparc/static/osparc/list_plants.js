@@ -4,20 +4,6 @@ var osparc_listplants = function() {
 		getPlants()
 	}
 
-    function getParameterByName(name) {
-        var query  = window.location.search.substring(1);
-        var value = query.search("=");
-        return query.substring(value+1);
-    }
-
-    function getUuid() {
-        return getParameterByName('uuid');
-    }
-
-    function getName() {
-        return getParameterByName('name');
-    }
-
 	function getPlants() {
 		$.ajax( {
             method:"GET",
@@ -25,8 +11,6 @@ var osparc_listplants = function() {
             dataType:"json",
 
         success:function(plants) {
-
-            // var plants = data['plants']
 
         	var ar = new Array(), j = -1;
 
@@ -44,16 +28,21 @@ var osparc_listplants = function() {
 
 			for (var key=0, size=plants.length; key<size; key++) {
 
+                // plantName assignment is necessary because the name must be escaped in the call to 
+                // deletePlant(). Note that it must not be used in the <td> where the plant name is shown 
+                // because the escape char '\' should not appear there
+                plantName = plants[key]['name'].replace(/'/g, "\\'");
+
     			ar[++j] = '<tr><td>';
                 ar[++j] = '<a href="view_plant?uuid=';
                 ar[++j] = plants[key]['uuid'];
                 ar[++j] = '">View</a>&nbsp;';
-
-				// ar[++j] = '<a href="delete_plant?uuid=';
-    //             ar[++j] = plants[key]['uuid'];
-    //             ar[++j] = '"';
-    //             ar[++j] = ' onclick="return confirm();">Delete</a>';
-                
+                ar[++j] = '<input type="button" onclick="osparc_listplants.deletePlant(';
+                ar[++j] = '\'';
+                ar[++j] = plantName;
+                ar[++j] = "',";
+                ar[++j] = plants[key]['id'];
+                ar[++j] = ');" value="Delete"/>';
     			ar[++j] = '</td><td>';
     			ar[++j] = plants[key]['name'];
     			ar[++j] = '</td><td>';
@@ -66,8 +55,8 @@ var osparc_listplants = function() {
      			ar[++j] = plants[key]['dcrating'];
      			ar[++j] = '</td></tr>';
  			}
- 			
- 			document.getElementById('plantlist').innerHTML = ar.join(''); 
+
+            document.getElementById('plantlist').innerHTML = ar.join(''); 
 	    },
             
         error:function(xhr, status, e) {
@@ -76,15 +65,13 @@ var osparc_listplants = function() {
     	});
 	}
 
-    function deletePlant() {
+    function deletePlant(name,id) {
 
-        console.log("in deletePlant");
-
-        if ( confirm("are you sure you want to delete plant "+getName()+"?") == false ) {
+        if ( confirm("are you sure you want to delete plant "+name+" ("+id+")?") == false ) {
             return;
         }   
 
-        url = "http://localhost:8001/api/plants?uuid="+getUuid();
+        url = "http://localhost:8001/api/plants/"+id;
 
         $.ajax( {
             method:"DELETE",
@@ -92,6 +79,7 @@ var osparc_listplants = function() {
             dataType:"json",
 
         success:function(plants) {
+            console.log("deletePlant success, plants="+plants);
             getPlants();
         },
         error:function(xhr, status, e) {
@@ -109,4 +97,3 @@ var osparc_listplants = function() {
 $(document).ready(function() {
     osparc_listplants.init();
 });
-
