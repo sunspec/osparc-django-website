@@ -21,8 +21,8 @@ var osparc_listplants = function() {
         	ar[++j] = '<th class="o_category_filter_header">Postal Code</th>';
         	ar[++j] = '<th class="o_category_filter_header">Activation Date</th>';
         	ar[++j] = '<th class="o_category_filter_header">DC Rating</th>';
-        	// ar[++j] = '<th class="o_category_filter_header">Last Import Date</th>';
-        	// ar[++j] = '<th class="o_category_filter_header">Last Import Status</th>';
+        	ar[++j] = '<th class="o_category_filter_header">Last Import Date</th>';
+        	ar[++j] = '<th class="o_category_filter_header">Last Import Status</th>';
             ar[++j] = '<th style="display:none;"></th>'
         	ar[++j] = '</tr></thead>';
 
@@ -53,6 +53,10 @@ var osparc_listplants = function() {
      			ar[++j] = plants[key]['activationdate'];
      			ar[++j] = '</td><td>';
      			ar[++j] = plants[key]['dcrating'];
+                ar[++j] = '</td><td>';
+                ar[++j] = plants[key]['uploadactivity']['mostrecenttimeseriesuploadtime'];
+                ar[++j] = '</td><td>';
+                ar[++j] = plants[key]['uploadactivity']['status'];
      			ar[++j] = '</td></tr>';
  			}
 
