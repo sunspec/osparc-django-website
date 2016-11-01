@@ -379,7 +379,10 @@ select {
 #plant_attributes_div div {
     margin:5px 0 5px 0;
 }
-
+.jsonplant {
+    width: 100px;
+    height: 500px;
+}
 
 /* PLANT DESIGN */
 

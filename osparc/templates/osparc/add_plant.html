@@ -25,10 +25,13 @@
                 <fieldset>
 <!--                 <input type='hidden' name='csrfmiddlewaretoken' value='QsmTa0gGg4TRI3fE02JSPcveknCZ6QvneRwLSlF1iQwTgaTZ2yhYoe2byPTYpL8j' />
  -->
-                    <input type="hidden" name="uuid" class="form-control" type="text">
                     <div class="form-group ">
                       <label class="col-sm-2 control-label ">Name</label>
                       <input name="name" class="form-control" type="text"  >
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-2 control-label ">UUID</label>
+                      <input name="uuid" class="form-control" type="text"  >
                     </div>
                     <div class="form-group ">
                       <label class="col-sm-2 control-label ">Description</label>
@@ -57,7 +60,7 @@
                       <input name="dcrating" class="form-control" type="text"  >
                     </div>
                     <div class="form-group ">
-                      <label class="col-sm-2 control-label ">TrackerType</label>
+                      <label class="col-sm-2 control-label ">ArrayType</label>
                       <input name="trackertype" class="form-control" type="text"  >
                     </div>
                     <div class="form-group ">
@@ -76,12 +79,46 @@
                     <input type="hidden" name="solaranywheresite" class="form-control" type="text"  >
               </fieldset>
                     <div class="form-actions">
-                      <button class="osparcButton" title="POST to add a plant">Add Plant</button>
+                      <button class="osparcButton" title="POST to add a plant">Add Plant from form fields</button>
                     </div>
             </form>
         </div>
     </div>
   </div>
+
+    <div class="well tab-content">
+        <form action="javascript:osparc_addplant.uploadPlant()" class="form-horizontal">
+          <textarea cols="40" data-override="content" id="id__content" name="_content" rows="25" required class="form-control">
+{
+    &quot;uuid&quot;: &quot;&quot;,
+    &quot;name&quot;: &quot;&quot;,
+    &quot;activationdate&quot;: &quot;2016-11-01&quot;,
+    &quot;dcrating&quot;: null,
+    &quot;postalcode&quot;: &quot;&quot;,
+    &quot;state&quot;: &quot;&quot;,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;county&quot;: &quot;&quot;,
+    &quot;city&quot;: &quot;&quot;,
+    &quot;latitude&quot;: &quot;&quot;,
+    &quot;longitude&quot;: &quot;&quot;,
+    &quot;timezone&quot;: &quot;&quot;,
+    &quot;weathersource&quot;: &quot;&quot;,
+    &quot;derate&quot;: null,
+    &quot;trackertype&quot;: &quot;&quot;,
+    &quot;tilt&quot;: null,
+    &quot;azimuth&quot;: null,
+    &quot;storageoriginalcapacity&quot;: null,
+    &quot;storagecurrentcapacity&quot;: null,
+    &quot;storagestateofcharge&quot;: null,
+    &quot;accountid&quot;: &quot;admin&quot;,
+    &quot;versionid&quot;: null,
+    &quot;solaranywheresite&quot;: &quot;&quot;
+}         </textarea>
+          <div class="form-actions">
+            <button class="osparcButton" title="POST to add a plant">Add Plant from json</button>
+          </div>
+        </form>
+    </div>
 
 <div class="result"></div>
 
