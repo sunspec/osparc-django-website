@@ -135,19 +135,6 @@ var osparc_listqueries = function() {
     }
 
     function runReport(queryId) {
-        // var reportRun = { 
-        //         "status": null,
-        //         "reportdefinition": queryId,
-        //         "runsubmittime": null,
-        //         "runstarttime": null,
-        //         "runcompletetime": null,
-        //         "firstmeasurementdate": null,
-        //         "lastmeasurementdate": null,
-        //         "numberofmeasurements": null,
-        //         "numberofplants": null,
-        //         "totaldccapacity": null,
-        //         "totalstoragecapacity": null
-        // };
         var reportRun = {"reportdefinition":queryId};
 
         console.log("reportRun: "+reportRun);
