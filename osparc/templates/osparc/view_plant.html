@@ -19,7 +19,114 @@
 
   <h2>Plant</h2>
 
-  <div id="plantdetails"></div>
+  <div class="o_category_filter">
+    <h2 class="o_category_filter_header">Plant Attributes</h2>
+  	<table>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Name</label></td>
+            <td id="name" class="form-control" type="text"></label></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">UUID</label></td>
+            <td id="uuid" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Description</label></td>
+            <td id="description" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Activation Date</label></td>
+            <td id="activationdate" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">DC Rating</label></td>
+            <td id="dcrating" class="form-control" type="text"></td>
+        </tr>
+                    <input type="hidden" name="accountid" class="form-control" type="text" value="admin" >
+                    <input type="hidden" name="solaranywheresite" class="form-control" type="text"  >
+    </table>
+  </div>
+
+  <div class="o_category_filter">
+    <h2 class="o_category_filter_header">Plant Location</h2>
+  	<table>
+		<tr>
+			<td><label class="col-sm-2 control-label ">State</label></td>
+            <td id="state" class="form-control" type="text"></label></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">County</label></td>
+            <td id="county" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">City</label></td>
+            <td id="city" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Time Zone</label></td>
+            <td id="timezone" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Latitude</label></td>
+            <td id="latitude" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Longitude</label></td>
+            <td id="longitude" class="form-control" type="text"></td>
+        </tr>
+    </table>
+  </div>
+
+  <div class="o_category_filter">
+    <h2 class="o_category_filter_header">Array Attributes</h2>
+  	<table>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Type</label></td>
+            <td id="arraytype" class="form-control" type="text"></label></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Tilt</label></td>
+            <td id="tilt" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Azimuth</label></td>
+            <td id="azimuth" class="form-control" type="text"></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Weather Data Source</label></td>
+            <td id="weathersource" class="form-control" type="text"></td>
+        </tr>
+    </table>
+  </div>
+
+  <div class="o_category_filter">
+    <h2 class="o_category_filter_header">Storage Attributes</h2>
+  	<table>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Storage Capacity</label></td>
+            <td id="storageoriginalcapacity" class="form-control" type="text"></label></td>
+        </tr>
+    </table>
+  </div>
+
+  <div class="o_category_filter">
+    <h2 class="o_category_filter_header">Key Performance Indicators</h2>
+  	<table>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Monthly Yield</label></td>
+            <td id="monthlyyield" class="form-control" type="text"></label></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Performance Ratio</label></td>
+            <td id="performanceratio" class="form-control" type="text"></label></td>
+        </tr>
+		<tr>
+			<td><label class="col-sm-2 control-label ">Storage State of Health</label></td>
+            <td id="storagestateofhealth" class="form-control" type="text"></label></td>
+        </tr>
+    </table>
+  </div>
+
 
 <script>w3IncludeHTML();</script>
 

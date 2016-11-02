@@ -24,7 +24,31 @@ var osparc_viewplant = function() {
             dataType:"json",
 
         success:function(data) {
- 			document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
+            // alas...this is so sweet...
+ 			// document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
+            // ...but not good enough
+            plant = data[0];
+            console.log(plant);
+            $('#name').text(plant['name']);
+            $('#uuid').text(plant['uuid']);
+            $('#description').text(plant['description']);
+            $('#activationdate').text(plant['activationdate']);
+            $('#dcrating').text(plant['dcrating']);
+            $('#state').text(plant['state']);
+            $('#county').text(plant['county']);
+            $('#city').text(plant['city']);
+            $('#postalcode').text(plant['postalcode']);
+            $('#timezone').text(plant['timezone']);
+            $('#latitude').text(plant['latitude']);
+            $('#longitude').text(plant['longitude']);
+            $('#arraytype').text(plant['arraytype']);
+            $('#tilt').text(plant['tilt']);
+            $('#azimuth').text(plant['azimuth']);
+            $('#weathersource').text(plant['weathersource']);
+            $('#storageoriginalcapacity').text(plant['storageoriginalcapacity']);
+            $('#monthlyyield').text(plant['plantreport']['monthlyyield']);
+            $('#performanceratio').text(plant['plantreport']['performanceratio']);
+            $('#storagestateofhealth').text(plant['plantreport']['storagestateofhealth']);
 	    },
             
         error:function(xhr, status, e) {
