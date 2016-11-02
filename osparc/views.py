@@ -33,6 +33,21 @@ def plant_added(request):
 	}
 	return render(request, 'osparc/plant_added.html', context)
 
+def add_query(request):
+	context = {
+		'account':'oSPARC Admin'
+	}
+	return render(request, 'osparc/add_query.html', context)
+
+def view_query(request):
+	return render(request, 'osparc/view_query.html')	
+
+def list_queries(request):
+	context = {
+		'account':'oSPARC Admin'
+	}
+	return render(request, 'osparc/list_queries.html', context)
+
 def add_report(request):
 	context = {
 		'account':'oSPARC Admin'

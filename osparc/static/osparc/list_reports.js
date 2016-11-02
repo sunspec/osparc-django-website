@@ -59,7 +59,9 @@ var osparc_listreports = function() {
         td.appendChild(tn);
         tr.appendChild(td);
 
-        tr.appendChild( actions(report['id']) );
+        if (report['status'] == 1) {    // ready
+            tr.appendChild( actions(report['id']) );
+        }
 
         return tr;
     }
@@ -112,7 +114,6 @@ var osparc_listreports = function() {
 
         success:function(runs) {
 
-            // We have the queries and results (runs); combine to form the 'results'
             writeReports(runs);
 	    },
 

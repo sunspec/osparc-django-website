@@ -9,9 +9,10 @@ urlpatterns = [
     url(r'^plant_added$', views.plant_added, name='plant_added'),
     url(r'^view_plant$', views.view_plant, name='view_plant'),
     url(r'^list_plants$', views.list_plants, name='list_plants'),
-    url(r'^report_added$', views.report_added, name='report_added'),
 
-    url(r'^add_report$', views.add_report, name='add_report'),
-    url(r'^view_report$', views.view_report, name='view_report'),
+    url(r'^add_query$', views.add_query, name='add_query'),
+    url(r'^list_queries$', views.list_queries, name='list_queries'),
+    url(r'^view_query$', views.view_query, name='view_query'),
     url(r'^list_reports$', views.list_reports, name='list_reports'),
+    url(r'^view_report$', views.view_report, name='view_report'),
 ]
