@@ -119,7 +119,7 @@ var osparc_dashboard = function() {
                     case 'MonthlyInsolation':
                         document.getElementById('ghi_mean').innerHTML = result[key]['mean'];
                         document.getElementById('ghi_med').innerHTML = result[key]['median'];
-                        document.getElementById('ghi_min').innerHTML = result[key]['mininum'];
+                        document.getElementById('ghi_min').innerHTML = result[key]['minimum'];
                         document.getElementById('ghi_max').innerHTML = result[key]['maximum'];
                         break;
                     case'DCRating':
