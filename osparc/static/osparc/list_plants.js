@@ -53,11 +53,17 @@ var osparc_listplants = function() {
      			ar[++j] = plants[key]['activationdate'];
      			ar[++j] = '</td><td>';
      			ar[++j] = plants[key]['dcrating'];
-                ar[++j] = '</td><td>';
-                ar[++j] = plants[key]['uploadactivity']['mostrecenttimeseriesuploadtime'];
-                ar[++j] = '</td><td>';
-                ar[++j] = plants[key]['uploadactivity']['status'];
-     			ar[++j] = '</td></tr>';
+                ar[++j] = '</td>';
+                if (plants[key]['uploadactivity'] !== null) {
+                    ar[++j] = '<td>';
+                    ar[++j] = plants[key]['uploadactivity']['mostrecenttimeseriesuploadtime'];
+                    ar[++j] = '</td><td>';
+                    ar[++j] = plants[key]['uploadactivity']['status'];
+         			ar[++j] = '</td>';
+                } else {
+                    ar[++j] = '<td></td><td></td>';
+                }
+                ar[++j] = '</tr>';
  			}
 
             document.getElementById('plantlist').innerHTML = ar.join(''); 
