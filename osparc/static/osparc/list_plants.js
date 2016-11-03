@@ -34,8 +34,8 @@ var osparc_listplants = function() {
                 plantName = plants[key]['name'].replace(/'/g, "\\'");
 
     			ar[++j] = '<tr><td>';
-                ar[++j] = '<a href="view_plant?uuid=';
-                ar[++j] = plants[key]['uuid'];
+                ar[++j] = '<a href="view_plant?id=';
+                ar[++j] = plants[key]['id'];
                 ar[++j] = '">View</a>&nbsp;';
                 ar[++j] = '<input type="button" onclick="osparc_listplants.deletePlant(';
                 ar[++j] = '\'';

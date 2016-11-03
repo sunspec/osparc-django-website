@@ -1,7 +1,7 @@
 var osparc_viewplant = function() {
 
 	function init() {
-		getPlant( getUuid() );
+		getPlant( getId() );
 	}
 
     function getParameterByName(name) {
@@ -10,24 +10,23 @@ var osparc_viewplant = function() {
         return query.substring(value+1);
     }
 
-    function getUuid() {
-        return getParameterByName('uuid');
+    function getId() {
+        return getParameterByName('id');
     }
 
-	function getPlant(uuid) {
+	function getPlant(id) {
 
-        url = "http://localhost:8001/api/plants?uuid="+uuid;
+        url = "http://localhost:8001/api/plants/"+id;
 
 		$.ajax( {
             method:"GET",
             url:url,
             dataType:"json",
 
-        success:function(data) {
+        success:function(plant) {
             // alas...this is so sweet...
  			// document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
             // ...but not good enough
-            plant = data[0];
             console.log(plant);
             $('#name').text(plant['name']);
             $('#uuid').text(plant['uuid']);
@@ -46,6 +45,8 @@ var osparc_viewplant = function() {
             $('#azimuth').text(plant['azimuth']);
             $('#weathersource').text(plant['weathersource']);
             $('#storageoriginalcapacity').text(plant['storageoriginalcapacity']);
+            $('#firstmeasurementdate').text(plant['plantreport']['firstmeasurementdate']);
+            $('#lastmeasurementdate').text(plant['plantreport']['lastmeasurementdate']);
             $('#monthlyyield').text(plant['plantreport']['monthlyyield']);
             $('#performanceratio').text(plant['plantreport']['performanceratio']);
             $('#storagestateofhealth').text(plant['plantreport']['storagestateofhealth']);
