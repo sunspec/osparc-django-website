@@ -6,34 +6,10 @@ var osparc_listqueries = function() {
 		getQueries();
 	}
 
-    function getParameterByName(name) {
-        var query  = window.location.search.substring(1);
-        var value = query.search("=");
-        return query.substring(value+1);
-    }
-
-    function getUuid() {
-        return getParameterByName('uuid');
-    }
-
-    function getName() {
-        return getParameterByName('name');
-    }
-
-    function actions( queryId ) {
+    function actions( queryId,queryName ) {
 
         var td = document.createElement('td');
         var space = document.createTextNode(' ');
-
-        // var att = document.createAttribute("href");
-        // att.value = "view_query?id="+queryId;
-        // var a = document.createElement('a');
-        // a.setAttributeNode(att);
-        // var an = document.createTextNode('View');
-        // a.appendChild(an);
-        // td.appendChild(a);
-
-        // td.appendChild(space);
 
         var buttonAttr = document.createAttribute("type");
         buttonAttr.value = "button";
@@ -47,38 +23,24 @@ var osparc_listqueries = function() {
         inp.setAttributeNode(valueAttr);
         td.appendChild(inp);
 
-        // var a = document.createElement('a');
-        // a.setAttributeNode(att);
-        // var an = document.createTextNode('Run');
-        // a.appendChild(an);
-        // td.appendChild(a);
-
-
-        // <input type="button" onclick="osparc_listplants.deletePlant(';
-        //         ar[++j] = '\'';
-        //         ar[++j] = plantName;
-        //         ar[++j] = "',";
-        //         ar[++j] = plants[key]['id'];
-        //         ar[++j] = ');" value="Delete"/>
-
-
         td.appendChild(space);
 
-        var att = document.createAttribute("href");
-        att.value = "delete_query?id="+queryId;
-        var a = document.createElement('a');
-        a.setAttributeNode(att);
-        var an = document.createTextNode('Delete');
-        a.appendChild(an);
-        td.appendChild(a);
-
-        console.log(td);
+        buttonAttr = document.createAttribute("type");
+        buttonAttr.value = "button";
+        onclickAttr = document.createAttribute("onclick");
+        onclickAttr.value = "osparc_listqueries.deleteQuery("+queryId+",'"+queryName+"');";
+        valueAttr = document.createAttribute("value");
+        valueAttr.value = "Delete";
+        inp = document.createElement('input');
+        inp.setAttributeNode(buttonAttr);
+        inp.setAttributeNode(onclickAttr);
+        inp.setAttributeNode(valueAttr);
+        td.appendChild(inp);
 
         return td;
     }
 
     function summarizeQuery( query ) {
-        // Note that col 0 contains the run's id. We don't currently use it..
         tr = document.createElement('tr');
 
         td = document.createElement('td');
@@ -101,21 +63,74 @@ var osparc_listqueries = function() {
         td.appendChild(tn);
         tr.appendChild(td);
 
-        tr.appendChild( actions(query['id']) );
+        tr.appendChild( actions(query['id'],query['name']) );
 
         return tr;
     }
 
     function writeQueries(queries) {
 
-        var body, tr, td, tn, row, col;
-        body = document.getElementsByTagName('tbody')[0];
+        var classNode = document.createAttribute('class');
+        classNode.value = "tablesorter";
 
-        for (row=0; row < queries.length; row++) {
+        var table = document.createElement('table');
+        table.setAttributeNode(classNode);
+
+        var headRow = document.createElement('tr');
+
+        var classNode = document.createAttribute('class');
+        classNode.value = "o_category_filter_header";
+
+        var th = document.createElement('th');
+        th.setAttributeNode(classNode);
+        tn = document.createTextNode("Report Name");
+        th.appendChild(tn);
+        headRow.appendChild(th);
+
+        console.log(headRow);
+
+        var classNode = document.createAttribute('class');
+        classNode.value = "o_category_filter_header";
+        var th = document.createElement('th');
+        th.setAttributeNode(classNode);
+        tn = document.createTextNode("Start Date");
+        th.appendChild(tn);
+        headRow.appendChild(th);
+
+        var classNode = document.createAttribute('class');
+        classNode.value = "o_category_filter_header";
+        var th = document.createElement('th');
+        th.setAttributeNode(classNode);
+        tn = document.createTextNode("End Date");
+        th.appendChild(tn);
+        headRow.appendChild(th);
+
+        var classNode = document.createAttribute('class');
+        classNode.value = "o_category_filter_header";
+        var th = document.createElement('th');
+        th.setAttributeNode(classNode);
+        tn = document.createTextNode("Plant Selection Criteria");
+        th.appendChild(tn);
+        headRow.appendChild(th);
+
+        var classNode = document.createAttribute('class');
+        classNode.value = "o_category_filter_header";
+        var th = document.createElement('th');
+        th.setAttributeNode(classNode);
+        tn = document.createTextNode("Actions");
+        th.appendChild(tn);
+        headRow.appendChild(th);
+
+        table.appendChild(headRow);
+
+        for (var row=0; row < queries.length; row++) {
             
-            body.appendChild( summarizeQuery(queries[row]) );
-
+            table.appendChild( summarizeQuery( queries[row] ) );
         }
+            
+        console.log(table);
+
+        $('#querylist').html(table);
     }
 
 	function getQueries() {
@@ -155,15 +170,15 @@ var osparc_listqueries = function() {
         });
     }
 
-    function deleteQuery() {
+    function deleteQuery(id,name) {
 
         console.log("in deleteQuery");
 
-        if ( confirm("are you sure you want to delete report definition "+getName()+"?") == false ) {
+        if ( confirm("are you sure you want to delete report definition "+name+" ("+id+")?") == false ) {
             return;
         }   
 
-        url = "http://localhost:8001/api/queries?uuid="+getUuid();
+        var url = "http://localhost:8001/api/queries/"+id;
 
         $.ajax( {
             method:"DELETE",
@@ -171,7 +186,7 @@ var osparc_listqueries = function() {
             dataType:"json",
 
         success:function(plants) {
-            getPlants();
+            getQueries();
         },
         error:function(xhr, status, e) {
             osparc_ui.showAjaxError(xhr,status,e);

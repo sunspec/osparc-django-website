@@ -66,7 +66,8 @@ var osparc_listplants = function() {
                 ar[++j] = '</tr>';
  			}
 
-            document.getElementById('plantlist').innerHTML = ar.join(''); 
+            doc = ar.join('');
+            $('#plantlist').html(ar.join(''));
 	    },
             
         error:function(xhr, status, e) {
@@ -89,7 +90,6 @@ var osparc_listplants = function() {
             dataType:"json",
 
         success:function(plants) {
-            console.log("deletePlant success, plants="+plants);
             getPlants();
         },
         error:function(xhr, status, e) {

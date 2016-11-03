@@ -11,33 +11,32 @@ var osparc_listreports = function() {
 		getReports();
 	}
 
-    function getParameterByName(name) {
-        var query  = window.location.search.substring(1);
-        var value = query.search("=");
-        return query.substring(value+1);
-    }
-
-    function getUuid() {
-        return getParameterByName('uuid');
-    }
-
-    function getName() {
-        return getParameterByName('name');
-    }
-
-    function actions( runId ) {
+    function viewAction( runId ) {
         var att = document.createAttribute("href");
         att.value = "view_report?id="+runId;
         var a = document.createElement('a');
         a.setAttributeNode(att);
         var an = document.createTextNode('View');
         a.appendChild(an);
-        var td = document.createElement('td');
-        td.appendChild(a);
+        return a;
+    }
 
-        console.log(td);
+    function deleteAction( name,runId ) {
+        var inp = document.createElement('input');
 
-        return td;
+        var att = document.createAttribute('type');
+        att.value = "button";
+        inp.setAttributeNode(att);
+
+        att = document.createAttribute('onclick');
+        att.value = "osparc_listreports.deleteReport(\""+name+"\","+runId+");";
+        inp.setAttributeNode(att);
+
+        att = document.createAttribute('value');
+        att.value = "Delete";
+        inp.setAttributeNode(att);
+
+        return inp;
     }
 
     function summarizeReport( report ) {
@@ -62,23 +61,27 @@ var osparc_listreports = function() {
         td.appendChild(tn);
         tr.appendChild(td);
 
+        td = document.createElement('td');
         if (report[2] == 1) {    // ready
-        // if (report['status'] == 1) {    // ready
-            tr.appendChild( actions(report[0]) );
-            // tr.appendChild( actions(report['id']) );
+            td.appendChild(viewAction(report[0]));
         }
+        td.appendChild(deleteAction(report[3],report[0]));
+        tr.appendChild(td);
+
+        console.log(tr);
 
         return tr;
     }
 
     function writeReports(reports) {
 
-        var body, tr, td, tn, row, col;
-        body = document.getElementsByTagName('tbody')[0];
+        var body = $('#reportlist');
+
+        body.html("");
 
         for (row=0; row < reports.length; row++) {
             
-            body.appendChild( summarizeReport(reports[row]) );
+            body.append( summarizeReport(reports[row]) );
 
         }
     }
@@ -141,15 +144,15 @@ var osparc_listreports = function() {
         });
     }
 
-    function deleteReport() {
+    function deleteReport(name,id) {
 
         console.log("in deleteReport");
 
-        if ( confirm("are you sure you want to delete plant "+getName()+"?") == false ) {
+        if ( confirm("are you sure you want to delete plant "+name+"("+id+")?") == false ) {
             return;
         }   
 
-        url = "http://localhost:8001/api/plants?uuid="+getUuid();
+        url = "http://localhost:8001/api/reports/"+id;
 
         $.ajax( {
             method:"DELETE",
@@ -157,7 +160,7 @@ var osparc_listreports = function() {
             dataType:"json",
 
         success:function(plants) {
-            getPlants();
+            getReports();
         },
         error:function(xhr, status, e) {
             osparc_ui.showAjaxError(xhr,status,e);

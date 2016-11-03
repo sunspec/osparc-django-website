@@ -20,7 +20,9 @@
 
 <h2>Create Report Definition</h2>
 
-<form action="javascript:osparc_addreport.addReport()" class="form-horizontal">
+<div class="result"></div>
+
+<form action="javascript:osparc_addquery.addQuery()" class="form-horizontal">
 
   <div class="o_category_filter">
 
@@ -97,7 +99,6 @@
     </div>
   </div>
  -->
-<div class="result"></div>
 
 <div id="overlay"></div>
 <div id="o_footer">
@@ -119,6 +120,6 @@
 
 <script src="{% static 'osparc/jquery.tablesorter.min.js' %}"></script>
 <script src="{% static 'osparc/main.js' %}"></script>
-<script src="{% static 'osparc/add_report.js' %}"></script>
+<script src="{% static 'osparc/add_query.js' %}"></script>
 </body>
 </html>

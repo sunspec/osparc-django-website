@@ -48,6 +48,12 @@ def list_queries(request):
 	}
 	return render(request, 'osparc/list_queries.html', context)
 
+def query_added(request):
+	context = {
+		'account':'oSPARC Admin'
+	}
+	return render(request, 'osparc/query_added.html', context)
+
 def add_report(request):
 	context = {
 		'account':'oSPARC Admin'

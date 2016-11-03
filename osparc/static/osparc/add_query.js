@@ -1,10 +1,10 @@
-var osparc_addreport = function() {
+var osparc_addquery = function() {
 
     // Add a report definition. 
     //
     // A side-effect on the server is to run the report and create a report run.
 
-    function addReport() {
+    function addQuery() {
 
         var inputArray = $('input').serializeArray();
 
@@ -29,8 +29,7 @@ var osparc_addreport = function() {
             data:postArray,
 
         success:function(data) {
-            console.log("in addReport.success");
-            $( ".result" ).load( "report_added" );
+            $( ".result" ).load( "query_added" );
             // document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
         },
             
@@ -43,6 +42,6 @@ var osparc_addreport = function() {
     }
 
     return {
-        addReport:addReport
+        addQuery:addQuery
     }
 }();
