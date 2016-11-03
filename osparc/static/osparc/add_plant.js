@@ -10,11 +10,12 @@ var osparc_addplant = function() {
             data:postArray,
 
         success:function(data) {
-            //   $( ".result" ).load( "plant_added" );
-            document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
+            $( ".result" ).load( "plant_added" );
+            // document.getElementById('plantdetails').innerHTML = "<pre><code>"+JSON.stringify(data,null,4)+"</code></pre>"; 
         },
             
         error:function(xhr, status, e) {
+            console.log("error: xhr="+xhr+" status="+status+" e="+e);
             osparc_ui.showAjaxError(xhr,status,e);
         }
         });
