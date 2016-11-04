@@ -1,7 +1,7 @@
 var osparc_addplant = function() {
 
     function postToServer(postArray) {
-        url = "http://localhost:8001/api/plants";
+        url = "http://localhost:8001/api/v1/plants";
 
         $.ajax( {
             method:"POST",

@@ -117,14 +117,14 @@ var osparc_listreports = function() {
 	function getReports() {
         $.ajax( {
             method:"GET",
-            url:"http://localhost:8001/api/reports",
+            url:"http://localhost:8001/api/v1/reports",
             dataType:"json",
 
         success:function(runs) {
 
             $.ajax( {
                 method:"GET",
-                url:"http://localhost:8001/api/queries",
+                url:"http://localhost:8001/api/v1/queries",
                 dataType:"json",
 
             success:function(queries) {
@@ -152,7 +152,7 @@ var osparc_listreports = function() {
             return;
         }   
 
-        url = "http://localhost:8001/api/reports/"+id;
+        url = "http://localhost:8001/api/v1/reports/"+id;
 
         $.ajax( {
             method:"DELETE",

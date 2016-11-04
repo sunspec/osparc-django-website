@@ -20,7 +20,7 @@ var osparc_addquery = function() {
             }
         });
 
-        url = "http://localhost:8001/api/queries";
+        url = "http://localhost:8001/api/v1/queries";
 
         $.ajax( {
             method:"POST",

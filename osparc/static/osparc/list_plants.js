@@ -7,7 +7,7 @@ var osparc_listplants = function() {
 	function getPlants() {
 		$.ajax( {
             method:"GET",
-            url:"http://localhost:8001/api/plants",
+            url:"http://localhost:8001/api/v1/plants",
             dataType:"json",
 
         success:function(plants) {
@@ -82,7 +82,7 @@ var osparc_listplants = function() {
             return;
         }   
 
-        url = "http://localhost:8001/api/plants/"+id;
+        url = "http://localhost:8001/api/v1/plants/"+id;
 
         $.ajax( {
             method:"DELETE",

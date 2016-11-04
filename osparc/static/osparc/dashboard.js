@@ -37,7 +37,7 @@ var osparc_dashboard = function() {
     function getTotals() {
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/aggregates",
+            url:"http://localhost:8001/api/v1/aggregates",
             dataType:"json",
             success:function(markup){
                 document.getElementById('total_plant_count').innerHTML = markup['count'];
@@ -60,7 +60,7 @@ var osparc_dashboard = function() {
         //get states with plant locations
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/aggregates?by=state",
+            url:"http://localhost:8001/api/v1/aggregates?by=state",
             dataType:"json",
             success:function(data) {
 
@@ -107,7 +107,7 @@ var osparc_dashboard = function() {
 
         $.ajax({
             method:"GET",
-            url:"http://localhost:8001/api/aggregates",
+            url:"http://localhost:8001/api/v1/aggregates",
             success:function(data){
 
             var result = data['kpis'];
@@ -186,7 +186,7 @@ var osparc_dashboard = function() {
 
     function getPlantDataByYearByDCRating(presentYear) {
 
-        $.ajax({method:"GET",dataType:"json",url:"http://localhost:8001/api/aggregates?by=year&by=dcrating",
+        $.ajax({method:"GET",dataType:"json",url:"http://localhost:8001/api/v1/aggregates?by=year&by=dcrating",
             success:function(response){
 
                 var data = response['byyearanddcrating'];

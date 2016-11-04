@@ -136,7 +136,7 @@ var osparc_listqueries = function() {
 	function getQueries() {
         $.ajax( {
             method:"GET",
-            url:"http://localhost:8001/api/queries",
+            url:"http://localhost:8001/api/v1/queries",
             dataType:"json",
 
         success:function(queries) {
@@ -156,7 +156,7 @@ var osparc_listqueries = function() {
 
         $.ajax( {
             method:"POST",
-            url:"http://localhost:8001/api/reports",
+            url:"http://localhost:8001/api/v1/reports",
             dataType:"json",
             data:reportRun,
 
@@ -178,7 +178,7 @@ var osparc_listqueries = function() {
             return;
         }   
 
-        var url = "http://localhost:8001/api/queries/"+id;
+        var url = "http://localhost:8001/api/v1/queries/"+id;
 
         $.ajax( {
             method:"DELETE",

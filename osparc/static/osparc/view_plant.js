@@ -16,7 +16,7 @@ var osparc_viewplant = function() {
 
 	function getPlant(id) {
 
-        url = "http://localhost:8001/api/plants/"+id;
+        url = "http://localhost:8001/api/v1/plants/"+id;
 
 		$.ajax( {
             method:"GET",

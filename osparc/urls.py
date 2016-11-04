@@ -16,4 +16,7 @@ urlpatterns = [
     url(r'^query_added$', views.query_added, name='query_added'),
     url(r'^list_reports$', views.list_reports, name='list_reports'),
     url(r'^view_report$', views.view_report, name='view_report'),
+
+    url(r'^help$', views.help, name='help'),
+
 ]

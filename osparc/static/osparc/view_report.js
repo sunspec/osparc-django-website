@@ -16,7 +16,7 @@ var osparc_viewreport = function() {
 
 	function getReport(id) {
 
-        url = "http://localhost:8001/api/reports/"+id;
+        url = "http://localhost:8001/api/v1/reports/"+id;
 
 		$.ajax( {
             method:"GET",
