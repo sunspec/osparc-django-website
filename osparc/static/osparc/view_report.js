@@ -73,10 +73,10 @@ var osparc_viewreport = function() {
                         document.getElementById('stor_max').innerHTML = osparc_ui.convertByKilo(result[key]['maximum'],3);
                         break;
                     case 'StorageStateOfHealth':
-                        document.getElementById('soh_mean').innerHTML = osparc_ui.convertByKilo(result[key]['mean'],3);
-                        document.getElementById('soh_med').innerHTML = osparc_ui.convertByKilo(result[key]['median'],3);
-                        document.getElementById('soh_min').innerHTML = osparc_ui.convertByKilo(result[key]['minimum'],3);
-                        document.getElementById('soh_max').innerHTML = osparc_ui.convertByKilo(result[key]['maximum'],3);
+                        document.getElementById('soh_mean').innerHTML = result[key]['mean'];
+                        document.getElementById('soh_med').innerHTML = result[key]['median'];
+                        document.getElementById('soh_min').innerHTML = result[key]['minimum'];
+                        document.getElementById('soh_max').innerHTML = result[key]['maximum'];
                         break;
                     }
                 }
