@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<!-- Copyright SunSpec Alliance 2014-2016 All Rights Reserved -->
+<!-- <c:set var="activeTab" value="manage_plants" scope="session"/> -->
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/themes_blue.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'osparc/osparc.css' %}" />
+
+<head>
+  <meta charset="utf-8">
+  <title>oSPARC</title>
+</head>
+
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+<body>
+  <div w3-include-html="head_nav"></div>
+
+<h1>Key Performance Indicators</h1>
+
+Key performance indicators (KPI) are presented for the set of plants defined in the report. The KPIs shown on the oSPARC dashboard apply to all oSPARC plants.
+<br><br>
+The sample interval used in all calculations is monthly; each plant's contributing value is the average over its values over the lifetime defined in the report - all time, for the dashboard report.
+<br><br>
+For each KPI, minimum, maximum, mean and median values are shown. These apply across the plants in the report; i.e. the minimum value is that of the plant with the lowest value for the KPI, the mean is the average across all plants, etc.
+<br><br>
+Three KPIs are reported: Yield, Performance Ratio and Storage State of Health. These are defined below.
+<br><br>
+The other values in the report are the measured values used to calculate the KPIs.
+
+<h2>Yield</h2>
+
+The standard Yield metric is considered to be the “bottom-line” indication of how well a system is performing.
+<br><br>
+Yield is calculated as follows:
+<br><br>
+Yield = monthly energy producion / Plant DC Rating
+<br><br>
+For each plant, monthly energy production is the average across all periods in the report. Mean, median, minimum and maxim values across the plant sample set are shown (see KPIs above). 
+
+<h2>Performance Ratio</h2>
+
+Performance Ratio (PR) normalizes Yield for insolation, as follows:
+<br><br>
+PR = Yield / (POA Insolation/1000)
+
+
+<!--The basic PR calculation uses the standard yield equation in the numerator and the actual
+measured plane of array (POA) Insolation summed over the assessment period divided by
+standard insolation in the denominator. The units work out to be hours divided by hours. The
+numerator is equivalent to the number of hours the system operated at the DC STC rating and the
+denominator is equivalent to the number of peak sunhours of insolation. Both the measured
+insolation and standard irradiance are in terms of meter2, and cancel directly.
+Both the numerator and denominator are summations of the measured increment data over the
+assessment period. The assessment period is monthly.-->
+<h2>Storage State of Health</h2>
+
+Storage state of health shows the remaining effectiveness of on-plant storage; it is the ratio of the current storage capacity divided by the initial (nameplate) storage capacity, as follows:
+<br><br>
+SoH = current capacity / nameplate capacity
+<br><br>
+Only two data points are used for each plant: original and current; state of health is independent of system age.
+
+
+<script>w3IncludeHTML();</script>
+
+<div id="o_footer">
+    <ul>
+        <li>Copyright &copy; 2014-2016 SunSpec Alliance</li>
+        <li><a href="http://www.sunspec.org/join-osparc-program/">Request Account</a></li>
+        <li><a href="http://sunspec.org/contact/" target="_blank">Contact Us</a></li>
+        <li><a href="http://www.sunspec.org/osparc-service-activation-agreement/" target="_blank">Terms of Use</a></li>
+  <li>Version 2.1</li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+<script src="{% static 'osparc/main.js' %}"></script>
+<script src="{% static 'osparc/view_report.js' %}"></script>
+</body>
+</html>
