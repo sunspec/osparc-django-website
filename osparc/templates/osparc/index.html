@@ -13,7 +13,66 @@
 </head>
 
 <body>
-<div w3-include-html="head_nav"></div>
+
+
+<!-- header from include/header.jsp (logos, title) -->
+<a href="http://www.sunspec.org/"><img src="{% static "osparc/images/osparc_header.jpeg" %}" alt="SunSpec Alliance oSPARC" title="SunSpec Alliance oSPARC"/></a>
+<div class="floatRight">
+  <a href="http://www.cleanpower.com/"><img src="{% static "osparc/images/by_SA-SystemCheck_web.png" %}" alt="Clean Power Research" title="Clean Power Research"/></a>
+</div>
+
+<!-- Top navigation bar from include/top_nav.jsp -->
+<div id="main_nav">
+  <ul class="dropdown top_level">
+    <li id="homeLink"><a href="/osparc">Dashboard</a></li>
+    <!--
+    <sec:authorize access="hasRole('admin')">
+      <li ><a href="#">Accounts</a>
+          <ul class="sub_menu">
+              <li><a href="/account/create">Create Account</a></li>
+              <li><a href="/account">Manage Accounts</a></li>
+          </ul>
+      </li>
+    </sec:authorize>
+  -->
+    <sec:authorize access="hasRole('admin') or hasRole('dataProvider')">
+      <li ><a href="#">Plants</a>
+          <ul class="sub_menu">
+              <li><a href="add_plant">Create Plant</a></li>
+<!--              <li><a href="/plant/upload">Upload Plant</a></li>
+              <li><a href="/plant/timeseries_upload">Upload Plant Timeseries Data</a></li>
+-->
+              <li><a href="list_plants">View Plants</a></li>
+          </ul>
+      </li>
+    </sec:authorize>
+      <li><a href="#">Reports</a>
+        <ul class="sub_menu">
+          <li><a href="add_query">Create Report Definition</a></li>
+          <li><a href="list_queries">View Report Definitions</a></li>
+          <li><a href="list_reports">View Reports</a></li>
+        </ul>
+      </li>
+      <li><a href="http://sunspec.org/osparchelp" target="_blank">Help</a></li>
+      <!--
+      <li>
+        <c:if test="${pageContext.request.remoteUser != null}">
+          <c:url var="logoutUrl" value="/logout"/>
+
+
+          <form action="${logoutUrl}" method="post" id="logout_form">
+            <a href="javascript:{}" onclick="submit_logout_form();">Logout</a>
+             Because we are using form and not form:form we need to
+             explicitly include the csrf token
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+          </form>
+        </c:if>
+      </li>
+      -->
+    </ul>
+    <div class="clearfix"></div>
+</div>
+
 
 <!-- Summary stats (user name, total counts, total capacities) -->
 <div id="summary_info">
@@ -146,8 +205,6 @@
     <div class="clearfix"></div>
 </div>
 
-<script src="http://www.w3schools.com/lib/w3data.js"></script>
-<script>w3IncludeHTML();</script>
 
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 <script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
