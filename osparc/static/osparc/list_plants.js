@@ -14,7 +14,9 @@ var osparc_listplants = function() {
 
         success:function(data) {
 
-            plants = data['result']
+            var plants = data['results'];
+            var nextUrl = data['next'];
+            console.log(nextUrl+" to get next set of plants");
 
         	var ar = new Array(), j = -1;
 

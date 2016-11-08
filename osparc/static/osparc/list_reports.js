@@ -123,14 +123,20 @@ var osparc_listreports = function() {
             url:url,
             dataType:"json",
 
-        success:function(runs) {
+        success:function(runsData) {
+            var path = "api/v1/queries";
+            var url = window.apiHost+"/"+path;
 
             $.ajax( {
                 method:"GET",
-                url:"http://osparc.sunspec.org:8001/api/v1/queries",
+                url:url,
                 dataType:"json",
 
-            success:function(queries) {
+            success:function(queriesData) {
+
+                // with pagination, there's a header with count, next, prev
+                var runs = runsData['results'];
+                var queries = queriesData['results'];
 
                 writeReports(combine(runs,queries));
             },

@@ -142,7 +142,9 @@ var osparc_listqueries = function() {
             url:url,
             dataType:"json",
 
-        success:function(queries) {
+        success:function(data) {
+            // with pagination, there's a header with count, next, prev
+            var queries = data['results'];
             writeQueries(queries);
 	    },
 
@@ -166,8 +168,7 @@ var osparc_listqueries = function() {
             dataType:"json",
             data:reportRun,
 
-        success:function(result) {
-            console.log("result: "+result);
+        success:function(data) {
         },
 
         error:function(xhr, status, e) {
@@ -189,7 +190,7 @@ var osparc_listqueries = function() {
             url:url,
             dataType:"json",
 
-        success:function(plants) {
+        success:function(data) {
             getQueries();
         },
         error:function(xhr, status, e) {
