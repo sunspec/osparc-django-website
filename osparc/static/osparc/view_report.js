@@ -1,5 +1,4 @@
 var osparc_viewreport = function() {
-    var host = "http://osparc.sunspec.org:8001";
 
 	function init() {
 		getReport( getId() );
@@ -18,7 +17,7 @@ var osparc_viewreport = function() {
 	function getReport(id) {
 
         var path = "api/v1/reports/"+id;
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 
 		$.ajax( {
             method:"GET",

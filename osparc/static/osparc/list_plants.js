@@ -1,5 +1,4 @@
 var osparc_listplants = function() {
-    var host = "http://osparc.sunspec.org:8001";
 
 	function init() {
 		getPlants()
@@ -7,7 +6,7 @@ var osparc_listplants = function() {
 
 	function getPlants() {
         var path = "api/v1/plants";
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 		$.ajax( {
             method:"GET",
             url:url,
@@ -88,7 +87,7 @@ var osparc_listplants = function() {
         }   
 
         var path = "api/v1/plants/"+id
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 
         $.ajax( {
             method:"DELETE",

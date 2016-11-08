@@ -1,6 +1,5 @@
 
 var osparc_listqueries = function() {
-    var host = "http://osparc.sunspec.org:8001";
 
 	function init() {
         console.log("in listqueries init");
@@ -136,7 +135,7 @@ var osparc_listqueries = function() {
 
 	function getQueries() {
         var path = "api/v1/queries";
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 
         $.ajax( {
             method:"GET",
@@ -159,7 +158,7 @@ var osparc_listqueries = function() {
         console.log("reportRun: "+reportRun);
 
         var path = "api/v1/reports";
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 
         $.ajax( {
             method:"POST",
@@ -183,7 +182,7 @@ var osparc_listqueries = function() {
         }   
 
         var path = "api/v1/queries/"+id;
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 
         $.ajax( {
             method:"DELETE",

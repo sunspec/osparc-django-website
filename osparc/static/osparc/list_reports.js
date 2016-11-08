@@ -6,7 +6,6 @@
 // When this web-app displays a "report", it displays the combination of the two web services objects.
 
 var osparc_listreports = function() {
-    var host = "http://osparc.sunspec.org:8001";
 
 	function init() {
 		getReports();
@@ -117,7 +116,7 @@ var osparc_listreports = function() {
 
 	function getReports() {
         var path = "api/v1/reports";
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 
         $.ajax( {
             method:"GET",
@@ -157,7 +156,7 @@ var osparc_listreports = function() {
         }   
 
         var path = "api/v1/reports/"+id;
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 
         $.ajax( {
             method:"DELETE",

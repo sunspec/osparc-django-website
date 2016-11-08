@@ -37,7 +37,7 @@ var osparc_dashboard = function() {
 
     function getTotals() {
         var path = "api/v1/aggregates";
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
         $.ajax({
             method:"GET",
             url:url,
@@ -62,7 +62,7 @@ var osparc_dashboard = function() {
 
         //get states with plant locations
         var path = "/api/v1/aggregates?by=state";
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
         $.ajax({
             method:"GET",
             url:url,
@@ -111,7 +111,7 @@ var osparc_dashboard = function() {
         console.log( "XXX YYY IN osparc_dashboard.getOsparcReport()" );
 
         var path = "/api/v1/aggregates";
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
 
         $.ajax({
             method:"GET",
@@ -195,7 +195,7 @@ var osparc_dashboard = function() {
     function getPlantDataByYearByDCRating(presentYear) {
 
         var path = "api/v1/aggregates?by=year&by=dcrating";
-        var url = host+"/"+path;
+        var url = window.apiHost+"/"+path;
         $.ajax({
             method:"GET",
             dataType:"json",
