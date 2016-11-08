@@ -1,5 +1,6 @@
 
 var osparc_listqueries = function() {
+    var host = "http://osparc.sunspec.org:8001";
 
 	function init() {
         console.log("in listqueries init");
@@ -134,9 +135,12 @@ var osparc_listqueries = function() {
     }
 
 	function getQueries() {
+        var path = "api/v1/queries";
+        var url = host+"/"+path;
+
         $.ajax( {
             method:"GET",
-            url:"http://osparc.sunspec.org:8001/api/v1/queries",
+            url:url,
             dataType:"json",
 
         success:function(queries) {
@@ -154,9 +158,12 @@ var osparc_listqueries = function() {
 
         console.log("reportRun: "+reportRun);
 
+        var path = "api/v1/reports";
+        var url = host+"/"+path;
+
         $.ajax( {
             method:"POST",
-            url:"http://osparc.sunspec.org:8001/api/v1/reports",
+            url:url,
             dataType:"json",
             data:reportRun,
 
@@ -171,14 +178,12 @@ var osparc_listqueries = function() {
     }
 
     function deleteQuery(id,name) {
-
-        console.log("in deleteQuery");
-
         if ( confirm("are you sure you want to delete report definition "+name+" ("+id+")?") == false ) {
             return;
         }   
 
-        var url = "http://osparc.sunspec.org:8001/api/v1/queries/"+id;
+        var path = "api/v1/queries/"+id;
+        var url = host+"/"+path;
 
         $.ajax( {
             method:"DELETE",

@@ -1,16 +1,21 @@
 var osparc_listplants = function() {
+    var host = "http://osparc.sunspec.org:8001";
 
 	function init() {
 		getPlants()
 	}
 
 	function getPlants() {
+        var path = "api/v1/plants";
+        var url = host+"/"+path;
 		$.ajax( {
             method:"GET",
-            url:"http://osparc.sunspec.org:8001/api/v1/plants",
+            url:url,
             dataType:"json",
 
-        success:function(plants) {
+        success:function(data) {
+
+            plants = data['result']
 
         	var ar = new Array(), j = -1;
 
@@ -82,7 +87,8 @@ var osparc_listplants = function() {
             return;
         }   
 
-        url = "http://osparc.sunspec.org:8001/api/v1/plants/"+id;
+        var path = "api/v1/plants/"+id
+        var url = host+"/"+path;
 
         $.ajax( {
             method:"DELETE",

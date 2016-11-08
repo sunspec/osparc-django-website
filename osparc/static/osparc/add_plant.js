@@ -1,7 +1,9 @@
 var osparc_addplant = function() {
+    var host = "http://osparc.sunspec.org:8001";
 
     function postToServer(postArray) {
-        url = "http://osparc.sunspec.org:8001/api/v1/plants";
+        var path = "api/v1/plants";
+        var url = host+"/"+path;
 
         $.ajax( {
             method:"POST",

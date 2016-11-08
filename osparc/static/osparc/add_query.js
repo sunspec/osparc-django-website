@@ -1,4 +1,5 @@
 var osparc_addquery = function() {
+    var host = "http://osparc.sunspec.org:8001"
 
     // Add a report definition. 
     //
@@ -20,7 +21,8 @@ var osparc_addquery = function() {
             }
         });
 
-        url = "http://osparc.sunspec.org:8001/api/v1/queries";
+        path = "api/v1/queries";
+        url = "%s/%s" % (host,path)
 
         $.ajax( {
             method:"POST",

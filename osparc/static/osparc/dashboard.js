@@ -1,4 +1,5 @@
 var osparc_dashboard = function() {
+    var host = "http://osparc.sunspec.org:8001";
     var today = new Date();
     var numYearsInChart = 0;
     var maxAttempts = 8;
@@ -35,9 +36,11 @@ var osparc_dashboard = function() {
     }
 
     function getTotals() {
+        var path = "api/v1/aggregates";
+        var url = host+"/"+path;
         $.ajax({
             method:"GET",
-            url:"http://osparc.sunspec.org:8001/api/v1/aggregates",
+            url:url,
             dataType:"json",
             success:function(markup){
                 document.getElementById('total_plant_count').innerHTML = markup['count'];
@@ -58,9 +61,11 @@ var osparc_dashboard = function() {
         chartData.addColumn('number','# of Plants');
 
         //get states with plant locations
+        var path = "/api/v1/aggregates?by=state";
+        var url = host+"/"+path;
         $.ajax({
             method:"GET",
-            url:"http://osparc.sunspec.org:8001/api/v1/aggregates?by=state",
+            url:url,
             dataType:"json",
             success:function(data) {
 
@@ -105,9 +110,12 @@ var osparc_dashboard = function() {
 
         console.log( "XXX YYY IN osparc_dashboard.getOsparcReport()" );
 
+        var path = "/api/v1/aggregates";
+        var url = host+"/"+path;
+
         $.ajax({
             method:"GET",
-            url:"http://osparc.sunspec.org:8001/api/v1/aggregates",
+            url:url,
             success:function(data){
 
             var result = data['kpis'];
@@ -186,7 +194,12 @@ var osparc_dashboard = function() {
 
     function getPlantDataByYearByDCRating(presentYear) {
 
-        $.ajax({method:"GET",dataType:"json",url:"http://osparc.sunspec.org:8001/api/v1/aggregates?by=year&by=dcrating",
+        var path = "api/v1/aggregates?by=year&by=dcrating";
+        var url = host+"/"+path;
+        $.ajax({
+            method:"GET",
+            dataType:"json",
+            url:url,
             success:function(response){
 
                 var data = response['byyearanddcrating'];
@@ -234,30 +247,13 @@ var osparc_dashboard = function() {
         var plantsChart = new google.visualization.ColumnChart(document.getElementById('newplants_chart'));
         plantsChart.draw(plantsChartData, options);
 
-	// Make the side-by-side containers the same height
+	   // Make the side-by-side containers the same height
         var statsH = $("#o_stats_wrapper").height();
         var reportsH = $("#o_myreports_stats").height();
         var tallerDiv = (statsH > reportsH) ? "#o_stats_wrapper" : "#o_myreports_stats";
         var shorterDiv = (tallerDiv==="#o_stats_wrapper") ?  "#o_myreports_stats" : "#o_stats_wrapper";
         $(shorterDiv).css("height",$(tallerDiv).height());
     }
-
-    // function postAddPlant(postData) {
-    //     console.log("postAddPlant");
-    //     $.ajax({
-    //         type: "post",
-    //         url: "url",
-    //         data: postData,
-    //         contentType: "application/x-www-form-urlencoded",
-    //         success: function(responseData, textStatus, jqXHR) {
-    //         console.log("postAddPlant success");
-    //             alert("data saved")
-    //         },
-    //         error: function(jqXHR, textStatus, errorThrown) {
-    //             console.log(errorThrown);
-    //         }
-    //     })
-    // }
 
     return {
         init:init
