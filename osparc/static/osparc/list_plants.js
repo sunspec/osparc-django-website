@@ -1,12 +1,34 @@
 var osparc_listplants = function() {
 
+    var limit;
+
 	function init() {
-		getPlants()
+        console.log( "init(). firstUrl="+sessionStorage.getItem("firstUrl") );
+        limit = 100;
+        if (sessionStorage.getItem("firstUrl") == null) {
+            sessionStorage.setItem("firstUrl",window.apiHost+"/api/v1/plants?limit="+limit+"&offset=0");
+        }
+		getFirst();
 	}
 
-	function getPlants() {
-        var path = "api/v1/plants";
-        var url = window.apiHost+"/"+path;
+    function getFirst() {
+        getPlants(sessionStorage.getItem("firstUrl"));
+    }
+
+    function getPrev() {
+        getPlants(sessionStorage.getItem("prevUrl"));
+    }
+
+    function getNext() {
+        getPlants(sessionStorage.getItem("nextUrl"));
+    }
+
+    function getLast() {
+        getPlants(sessionStorage.getItem("lastUrl"));
+    }
+
+	function getPlants(url) {
+        console.log( "getting "+url );
 		$.ajax( {
             method:"GET",
             url:url,
@@ -15,8 +37,18 @@ var osparc_listplants = function() {
         success:function(data) {
 
             var plants = data['results'];
-            var nextUrl = data['next'];
-            console.log(nextUrl+" to get next set of plants");
+            if ( data['next'] != null ) {
+                sessionStorage.setItem("nextUrl",data['next']);
+            } else {
+                sessionStorage.setItem("nextUrl",sessionStorage.getItem("lastUrl"));
+            }
+            if ( data['previous'] != null ) {
+                sessionStorage.setItem("prevUrl",data['previous']);
+            } else {
+                sessionStorage.setItem("prevUrl",sessionStorage.getItem("firstUrl"));
+            }
+            var total = data['count'];
+            sessionStorage.setItem("lastUrl",window.apiHost+"/api/v1/plants?limit="+limit+"&offset="+(total-limit));
 
         	var ar = new Array(), j = -1;
 
@@ -107,6 +139,10 @@ var osparc_listplants = function() {
 
     return {
         init:init,
+        getFirst:getFirst,
+        getNext:getNext,
+        getPrev:getPrev,
+        getLast:getLast,
         deletePlant:deletePlant
     }
 }();

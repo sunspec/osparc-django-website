@@ -1,5 +1,4 @@
 var osparc_dashboard = function() {
-    var host = "http://osparc.sunspec.org:8001";
     var today = new Date();
     var numYearsInChart = 0;
     var maxAttempts = 8;
@@ -19,7 +18,6 @@ var osparc_dashboard = function() {
 
     function init(){
 
-        console.log( "XXX YYY IN osparc_dashboard.init()" );
         getTotals();
         drawPlantsByStateChart();
         drawPlantsByAgeChart();
@@ -38,6 +36,7 @@ var osparc_dashboard = function() {
     function getTotals() {
         var path = "api/v1/aggregates";
         var url = window.apiHost+"/"+path;
+
         $.ajax({
             method:"GET",
             url:url,
@@ -61,7 +60,7 @@ var osparc_dashboard = function() {
         chartData.addColumn('number','# of Plants');
 
         //get states with plant locations
-        var path = "/api/v1/aggregates?by=state";
+        var path = "api/v1/aggregates?by=state";
         var url = window.apiHost+"/"+path;
         $.ajax({
             method:"GET",
@@ -108,9 +107,7 @@ var osparc_dashboard = function() {
 
     function getOsparcReport(){
 
-        console.log( "XXX YYY IN osparc_dashboard.getOsparcReport()" );
-
-        var path = "/api/v1/aggregates";
+        var path = "api/v1/aggregates";
         var url = window.apiHost+"/"+path;
 
         $.ajax({

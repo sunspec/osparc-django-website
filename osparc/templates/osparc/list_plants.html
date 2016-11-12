@@ -85,18 +85,26 @@
   </sec:authorize>
 -->
 
-<div id="plant_list_div">
-
-  <table id="plantlist" class="tablesorter"></table>
-
-<!-- paging stuff...
-  <jsp:include page="../includes/pager.jsp" />
-  <jsp:include page="../includes/report_popup.jsp" />
-...-->
+<div id="pager" class="pager">
+<form>
+  <input type="image" onclick="osparc_listplants.getFirst();return false;" src="{% static "osparc/images/first.png" %}"/>
+  <input type="image" onclick="osparc_listplants.getPrev();return false;" src="{% static "osparc/images/prev.png" %}"/>
+  <input type="image" onclick="osparc_listplants.getNext();return false;" src="{% static "osparc/images/next.png" %}"/>
+  <input type="image" onclick="osparc_listplants.getLast();return false;" src="{% static "osparc/images/last.png" %}"/>
+<!--   <select class="pagesize">
+    <option value="20">20</option>
+    <option value="50">50</option>
+    <option selected="selected"  value="100">100</option>
+    <option value="999999">All</option>
+  </select>
+ --></form>
+<div class="clearfix"></div>
 </div>
 
+<div id="plant_list_div">
+  <table id="plantlist" class="tablesorter"></table>
+</div>
 
-<div id="overlay"></div>
 <div id="o_footer">
     <ul>
         <li>Copyright &copy; 2014-2016 SunSpec Alliance</li>

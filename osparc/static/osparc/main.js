@@ -14,9 +14,9 @@ var osparc_ui = function(){
        //      }
        //  });
 
-        console.log( "XXX YYY IN main.init()" );
-
         window.apiHost = "http://localhost:8001";
+
+        console.log( "XXX YYY IN main.init(). apiHost="+apiHost );
 
 <!-- kinda looks like this does nothing...
         $("ul.dropdown li").hover(function(){
