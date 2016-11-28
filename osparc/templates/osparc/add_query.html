@@ -87,16 +87,16 @@
     <div id="report_attributes_div">
 
       <div class="floatLeft">
-        <label for="name">Report Name</label>
+        <label for="name"><b>Report Name</b></label>
         <div><input name="name"/></div>
       </div>
 
       <div id="plant_evalperiod_div" class="floatLeft">
-          <label>Initial Measurement Date</label>
+          <label><b>Initial Measurement Date</b></label>
           <div><input name="observationstartdate" class="form-control" type="date" value="2001-01-01"></div>
       </div>
       <div id="plant_evalperiod_div" class="floatLeft">
-          <label>Final Measurement Date</label>
+          <label><b>Final Measurement Date</b></label>
           <div><input name="observationenddate" class="form-control" type="date" value="2016-12-31"></div>
       </div>
 
@@ -109,7 +109,7 @@
 
     <h2 class="o_category_filter_header">Plant Selection Criteria</h2>
 
-    <div id="plant_attributes_div">
+<!--     <div id="plant_attributes_div">
         <div id="plant_state_div" class="floatLeft">
           <label for="plantState">Attribute</label>
           <div><input name="plantfilterattribute"/></div>
@@ -122,6 +122,22 @@
           <label for="plantState">Value</label>
           <div><input name="plantfiltervalue"/></div>
         </div>
+      <div class="clearfix"></div>
+    </div><!-- close plant_attributes_div
+ -->
+    <table id="plant_attributes_div">
+      <tr>
+        <th>Attribute</th>
+        <th>Comparison Operation</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td><input name="plantfilterattribute"/></td>
+        <td><input name="plantfilteroperation"/></td>
+        <td><input name="plantfiltervalue"/></td>
+        <td><button class="osparcButton" action="javascript:osparc_addquery.addRow()"hidden>another</button></td>
+      </tr>
+    </table><!-- close plant_attributes_div -->
 
 <!-- TBD XXX implement drop-down of possible attributes and operations. Valid attributes are plant
      attributes, from the osparc web services models.py Plant class. Valid operations are from the django
@@ -131,9 +147,6 @@
      range, date, year, month, day, week_day, hour, minute, second, isnull, regex, iregex.
 -->
 
-      <div class="clearfix"></div>
-
-    </div><!-- close plant_attributes_div -->
   </div><!-- close category filter div -->
 
   <!-- <jsp:include page="../plant/plant_construction.jsp" />
@@ -142,7 +155,6 @@
 
   <div class="form-actions">
     <button class="osparcButton">Create Report Definition</button>
-    <button class="osparcButton o_cancel">Cancel</button>
   </div>
 </form>
 

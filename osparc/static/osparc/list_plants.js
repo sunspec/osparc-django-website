@@ -3,7 +3,6 @@ var osparc_listplants = function() {
     var limit;
 
 	function init() {
-        console.log( "init(). firstUrl="+sessionStorage.getItem("firstUrl") );
         limit = 100;
         if (sessionStorage.getItem("firstUrl") == null) {
             sessionStorage.setItem("firstUrl",window.apiHost+"/api/v1/plants?limit="+limit+"&offset=0");
@@ -28,7 +27,6 @@ var osparc_listplants = function() {
     }
 
 	function getPlants(url) {
-        console.log( "getting "+url );
 		$.ajax( {
             method:"GET",
             url:url,
@@ -49,6 +47,10 @@ var osparc_listplants = function() {
             }
             var total = data['count'];
             sessionStorage.setItem("lastUrl",window.apiHost+"/api/v1/plants?limit="+limit+"&offset="+(total-limit));
+
+            $('#firstIndex').html(plants[0]['id']);
+            $('#lastIndex').html(plants[plants.length-1]['id']);
+            $('#totalIndex').html(total);
 
         	var ar = new Array(), j = -1;
 
