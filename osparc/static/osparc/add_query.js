@@ -4,13 +4,17 @@ var osparc_addquery = function() {
     //
     // A side-effect on the server is to run the report and create a report run.
 
+    function init() {
+        $(".js-example-basic-single").select2();
+    }
+
     function addQuery() {
 
-        var inputArray = $('input').serializeArray();
+        var inputArray = $('input,select').serializeArray();
 
         var postArray = {};
         inputArray.forEach(function (item) {
-              if (postArray[item.name] !== undefined) {
+            if (postArray[item.name] !== undefined) {
                 if (!postArray[item.name].push) {
                     postArray[item.name] = [postArray[item.name]];
                 }
@@ -42,9 +46,9 @@ var osparc_addquery = function() {
         return true;
     }
 
-    function addRow() {}
+    function addRow() {
         // Find a <table> element with id="myTable":
-        var table = document.getElementById("plant_attributes_div");
+        var table = document.getElementById("plant_attributes_table");
 
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(0);
@@ -61,7 +65,14 @@ var osparc_addquery = function() {
     }
 
     return {
+        init:init,
         addQuery:addQuery,
         addRow:addRow
     }
 }();
+
+$(document).ready(function() {
+    osparc_addquery.init();
+});
+
+

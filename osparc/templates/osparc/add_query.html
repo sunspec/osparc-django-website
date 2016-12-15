@@ -6,6 +6,14 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'osparc/themes_blue.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'osparc/osparc.css' %}" />
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+<script src="{% static 'osparc/jquery.tablesorter.min.js' %}"></script>
+<script src="{% static 'osparc/main.js' %}"></script>
+<script src="{% static 'osparc/add_query.js' %}"></script>
 
 <head>
   <meta charset="utf-8">
@@ -109,44 +117,45 @@
 
     <h2 class="o_category_filter_header">Plant Selection Criteria</h2>
 
-<!--     <div id="plant_attributes_div">
-        <div id="plant_state_div" class="floatLeft">
-          <label for="plantState">Attribute</label>
-          <div><input name="plantfilterattribute"/></div>
-        </div>
-        <div id="plant_state_div" class="floatLeft">
-          <label for="plantState">Comparison Operation</label>
-          <div><input name="plantfilteroperation"/></div>
-        </div>
-        <div id="plant_state_div" class="floatLeft">
-          <label for="plantState">Value</label>
-          <div><input name="plantfiltervalue"/></div>
-        </div>
-      <div class="clearfix"></div>
-    </div><!-- close plant_attributes_div
- -->
-    <table id="plant_attributes_div">
+    <table id="plant_attributes_table">
       <tr>
         <th>Attribute</th>
         <th>Comparison Operation</th>
         <th>Value</th>
       </tr>
       <tr>
-        <td><input name="plantfilterattribute"/></td>
-        <td><input name="plantfilteroperation"/></td>
+        <td><select class="js-example-basic-single" name="plantfilterattribute">
+              <option value="name">Name</option>
+              <option value="activationdate">Activation Date</option>
+              <option value="dcrating">DC Rating</option>
+              <option value="postalcode">Postal Code</option>
+              <option value="state">State</option>
+              <option value="description">Description</option>
+              <option value="county">County</option>
+              <option value="city">City</option>
+              <option value="latitude">Latitude</option>
+              <option value="longitude">Longitude</option>
+              <option value="timezone">Timezone</option>
+              <option value="arraytype">Array Type</option>
+              <option value="tilt">Tilt</option>
+              <option value="azimuth">Azimuth</option>
+              <option value="storageoriginalcapacity">Storage Original Capacity</option>
+              <option value="storagecurrentcapacity">Storage Current Capacity</option>
+              <option value="storagestateofcharge">Storage State of Charge</option>
+            </select>
+        </td>
+        <td><select class="js-example-basic-single" name="plantfilteroperation">
+              <option value="like">contains</option>
+              <option value="<">less than</option>
+              <option value="<=">less than or equal to</option>
+              <option value="=">equal to</option>
+              <option value=">=">greater than or equal to</option>
+              <option value=">">greater than</option>
+           </select>
+        </td>
         <td><input name="plantfiltervalue"/></td>
-        <td><button class="osparcButton" action="javascript:osparc_addquery.addRow()"hidden>another</button></td>
       </tr>
-    </table><!-- close plant_attributes_div -->
-
-<!-- TBD XXX implement drop-down of possible attributes and operations. Valid attributes are plant
-     attributes, from the osparc web services models.py Plant class. Valid operations are from the django
-     field lookups list, see https://docs.djangoproject.com/en/1.10/ref/models/querysets/#field-lookups.
-
-     ops: exact, iexact, contains, icontains, in, gt, gte, lt, lte, startswith, istartswith, endswith, iendswith,
-     range, date, year, month, day, week_day, hour, minute, second, isnull, regex, iregex.
--->
-
+    </table><!-- close plant_attributes_table -->
   </div><!-- close category filter div -->
 
   <!-- <jsp:include page="../plant/plant_construction.jsp" />
@@ -180,13 +189,5 @@
     <div class="clearfix"></div>
 </div>
 
-
-<!-- from common_js.jsp -->
-<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-<script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
-
-<script src="{% static 'osparc/jquery.tablesorter.min.js' %}"></script>
-<script src="{% static 'osparc/main.js' %}"></script>
-<script src="{% static 'osparc/add_query.js' %}"></script>
 </body>
 </html>
