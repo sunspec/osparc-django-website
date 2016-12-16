@@ -13,7 +13,11 @@ var osparc_addquery = function() {
         var inputArray = $('input,select').serializeArray();
 
         var postArray = {};
+        var sawLike = false;
         inputArray.forEach(function (item) {
+            if (item.value == 'like') {
+                sawLike = true;
+            }
             if (postArray[item.name] !== undefined) {
                 if (!postArray[item.name].push) {
                     postArray[item.name] = [postArray[item.name]];
@@ -22,7 +26,11 @@ var osparc_addquery = function() {
             } else {
                 postArray[item.name] = item.value || '';
             }
-        });
+        }
+        );
+        if (sawLike == true) {
+            postArray['plantfiltervalue'] = '%'+postArray['plantfiltervalue']+'%'
+        }
 
         var path = "api/v1/queries";
         var url = window.apiHost+"/"+path;
